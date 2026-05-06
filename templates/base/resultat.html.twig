@@ -6,20 +6,18 @@
 {% block body %}
 
 	<div class="acceuil_pres">
-
 		<div class="box_blur_acceuil">
 			<h1 class="text-center display-1 fw-bold">NovaSprite</h1>
 
 			<p class="text-center fw-bold">La référence en sprite et asset</p>
 
-			{#<div class="bar_recherche">#}
-				{{render(controller('App\\Controller\\BaseController::recherche'))}}
-			{#</div>#}
+
+			{{render(controller('App\\Controller\\BaseController::recherche'))}}
+			<p class="text-center fw-bold">{{word}}</p>
 		</div>
 	</div>
 
-
-	<div class="image-wrapper-container">
+	{#<div class="image-wrapper-container">
 		<div class="image-wrapper">
 			<img src="images/img_produit/assetpack.png" alt="Image Réactive" usemap="#image-map">
 			<div class="point" style="top:170px; left:495px;"></div>
@@ -29,24 +27,12 @@
 	<map name="image-map">
 		<area shape="rect" coords="458,132,533,207" href="https://www.amazon.fr/Smiffys-chevalier-combinaison-pantalon-impression-num%C3%A9rique/dp/B01CW3IG4O/ref=sr_1_10?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&crid=1USOK909MRD32&dib=eyJ2IjoiMSJ9.alHESWo5dEMioaUncU5elgr_5QYjL_ronwb2N26-fhUKRjvdr_s3yqrSDreqKsDQFlyaQznulvVeArz_SZGjl-iTltL-RBFkAmkai9cGTUKBJfjATzYpFaFC2KYmHW5ChgP5WDIzv80-m46JGcNd4tBSO3pJ0XFp7e3xl7m8v6KPLGieZwsAeMy7sdLF6FVPjZaypDwYBEUNiDVrIQPm86HYeerFLm55KAI8IEvt7f2klyR5Ls-s7TOTxxxsmA2N0KozF6kArNPVc2kYoipYPvfVwvzaQw24AUQnwIRHfmA.5jBIJgc0brhAnpfKvZiuJjwSc8vN6e9xHADRl8PFpX4&dib_tag=se&keywords=chevalier%2Barmure&qid=1775804200&sprefix=chevaliers%2Barmure%2Caps%2C314&sr=8-10&th=1&psc=1">
 		<area shape="circle" coords="67,195,30" href="https://www.amazon.fr/Caillou-lobjet-mignon-toute-galaxie/dp/B0C14BCM4K/ref=sr_1_8?__mk_fr_FR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&dib=eyJ2IjoiMSJ9.P3XwpZR_Oc8SJhnWxy7gID5-u4LLsbTpkHpMoEveLXJ-_pD13gpZEXnrRTeiSc-vb5Fu7E9_tJM8YXjCHy4pIX5rf5hrkZig-VyuzZKnMlaJVpoD7UhEJNj2lsgtleIy4AFHTdl_-kvLE3meHsx_y-jMLsTRrEw_EQZtRTBHpBZloGcYRrVTd6nPjZ687UBcjWhJzHGRSJOLjZ_p96qGz0udErUCn7RR2DnPNq7Zph1C_xH82CWFkLhlqyqIj-qbzZbMP3KqbGljXJaiEa3JDHjEX4ulzgMa_ttPJD0Yz_I.JYNxScuMSum6ClTwfep_Z3Ye4iNEUgFo7_NCyTlnQPs&dib_tag=se&keywords=caillou&qid=1775804086&sr=8-8&th=1">
-	</map>
-
+	</map>#}
 
 	<div class="wrap">
 		{% for produit in produits %}
-			<div
-				class="card_anime" data-id="returner">
-				{#<a href="{{ path('app_favori', {'id': produit.id}) }}" class="rouge" data-id="{{ produit.id }}">
-													{% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-														<i class="bi bi-heart favori"></i>
-													{% else %}
-														{% if produit in app.user.produits %}
-															<i class="bi bi-heart-fill favori"></i>
-														{% else %}
-															<i class="bi bi-heart favori"></i>
-														{% endif %}
-													{% endif %}
-												</a>#}
+			<div class="card_anime" data-id="returner">
+
 				<a href="{% if is_granted('IS_AUTHENTICATED_FULLY') %}javascript:void(0); {% else %}{{ path('app_login') }}{% endif %}" class="favori-toggle" data-id="{{ produit.id }}" data-url="{{ path('app_favori', {'id': produit.id}) }}" data-auth="{{ is_granted('IS_AUTHENTICATED_FULLY') ? 'true' : 'false' }}">
 
 					{% if not is_granted('IS_AUTHENTICATED_FULLY') %}
@@ -59,9 +45,7 @@
 						{% endif %}
 					{% endif %}
 				</a>
-				{#<a href="{{ path('app_favori', {'id': produit.id}) }}" class="fav-btn rouge">
-																					<i class="bi bi-heart favori-icon"></i>
-																				</a>#}
+
 				{% set image = 'images/img_produit/'~ produit.image %}
 				<div class="div_card_img">
 					<img class="card-img-top" src="{{asset(image)}}" alt="Image de {{produit.name}} ">
@@ -71,8 +55,6 @@
 					<p class="explain">{{produit.designation}}</p>
 					<p class="price">{{ produit.prix|number_format(2, '.', '') }}€</p>
 				</div>
-
-				{#<a href="{{path("app_panier",{'id':produit.id})}}" class="ajout_panier"><i class="bi bi-bag"></i>‎ Add to Cart</a>#}
 
 				<a href="{% if is_granted('IS_AUTHENTICATED_FULLY') %}javascript:void(0); {% else %}{{ path('app_login') }}{% endif %}" class="ajout-panier ajout_panier" data-id="{{ produit.id }}" data-url="{{ path('app_panier', {'id': produit.id}) }}" data-auth="{{ is_granted('IS_AUTHENTICATED_FULLY') ? 'true' : 'false' }}">
 
@@ -84,5 +66,4 @@
 			</div>
 		{% endfor %}
 	</div>
-
 {% endblock %}

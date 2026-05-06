@@ -1,0 +1,148 @@
+main {
+    padding-top: 100px;
+}
+
+.container-wrap-recu {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    padding-bottom: 20px;
+}
+
+/* ZONE PANIER (gauche) */
+.wrap {
+    flex: 1;              /* prend tout l’espace disponible */
+    min-width: 0;         /* évite overflow flex */
+}
+
+/* RECU (droite) */
+.recu {
+    width: 320px;
+    flex-shrink: 0;
+
+    position: sticky;
+    top: 20px;
+
+    background: #ffffff;
+    border-radius: 16px 0 0 16px; /*-----*/
+    padding: 20px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+    border: 1px solid #eef0f3;
+
+    height: fit-content;
+}
+
+/* RESPONSIVE MOBILE */
+@media (max-width: 900px) {
+    .container-wrap-recu {
+        flex-direction: column;
+    }
+
+    .recu {
+        width: 100%;
+        position: static; /* revient dans le flow */
+        border-radius: 0;
+    }
+}
+
+.recu-title {
+    font-size: 18px;
+    font-weight: 700;
+    margin-bottom: 15px;
+}
+
+.recu-line {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    color: #4b5563;
+    margin-bottom: 10px;
+}
+
+.recu-divider {
+    height: 1px;
+    background: #e5e7eb;
+    margin: 15px 0;
+}
+
+.recu-total {
+    display: flex;
+    justify-content: space-between;
+    font-size: 16px;
+    font-weight: 700;
+    color: #111827;
+}
+
+.recu-total span:last-child {
+    color: #4c4c4c;
+    font-size: 18px;
+}
+
+.checkout-btn {
+    width: 100%;
+    margin-top: 15px;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    background: #111827;
+    color: white;
+    font-weight: 600;
+    cursor: pointer;
+}
+.checkout-btn:hover {
+    background: #000;
+}
+
+.secure {
+    font-size: 12px;
+    color: #6b7280;
+    margin-top: 10px;
+    text-align: center;
+}
+/*
+.div-achat-continu {
+    width: 100%;
+    min-height: 80vh; /* centre verticalement dans la page 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.btn-achat-continu {
+    background: #111111;
+    border-radius: 12px;
+    text-decoration: none;
+    color: white;
+    padding: 15px 28px;
+    font-weight: 600;
+    letter-spacing: 0.3px;
+    transition: all 0.25s ease;
+}
+
+.btn-achat-continu:hover {
+    background: #000;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+}*/
+
+
+.back-panier{
+    padding-top: 110px;
+}
+
+main{
+    padding: 0;
+    background: url(../images/img_icon/Example4.gif) center / cover no-repeat;
+    background-attachment: fixed;
+    
+}
+
+.box_blur_panier{
+    padding: 20px;
+    border-radius: 10px;
+    backdrop-filter: blur(5px);
+    border: solid rgba(128, 128, 128, 0.224) 1px;
+    background-color: #ffffff41;
+    margin: 0 50px ;
+    margin-bottom: 20px;
+}

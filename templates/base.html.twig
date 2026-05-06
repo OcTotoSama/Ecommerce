@@ -1,63 +1,143 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="UTF-8">
-        <title>{% block title %}Welcome!{% endblock %}</title>
-        <link rel="icon" href="images/img_icon/iconsite.ico">
-        <link href="https://bootswatch.com/5/lumen/bootstrap.min.css" rel="stylesheet">
-        {% block stylesheets %}
-        {% endblock %}
+	<head>
+		<meta charset="UTF-8">
+		<title>
+			{% block title %}NovaSprite
+			{% endblock %}
+		</title>
+		<link rel="icon" href="images/img_icon/icon5.png">
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 
-       
-    </head>
-    <body>
-    <nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark">
-        <div class="container-fluid">
-            <a class="navbar-brand" href="{{path('app_index')}}">NovaSprite</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarColor01">
-            <ul class="navbar-nav me-auto">
-                <li class="nav-item">
-                <a class="nav-link active" href="#">Produit
-               
-                    <span class="visually-hidden">(current)</span>
-                </a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="#">Features</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="#">Pricing</a>
-                </li>
-                <li class="nav-item">
-                <a class="nav-link" href="#">About</a>
-                </li>
-                <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">Dropdown</a>
-                <div class="dropdown-menu">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Separated link</a>
-                </div>
-                </li>
-            </ul>
-            <form class="d-flex">
-                <input class="form-control me-sm-2" type="search" placeholder="Search">
-                <button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
-            </form>
-            </div>
-        </div>
-    </nav>
+		{% block stylesheets %}
+			<link rel="stylesheet" href="https://bootswatch.com/5/sandstone/bootstrap.min.css">
+			<link rel="stylesheet" href="css/css-card.css">
+			<link rel="stylesheet" href="css/base.css">
+			<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+		{% endblock %}
 
 
-        {% block body %}{% endblock %}
-        {% block javascripts %}
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
-        {% endblock %}
-    </body>
+	</head>
+	<body {% block body_attributes %} {% endblock %}>
+		<nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
+			<div class="container-fluid ">
+				<a class="navbar-brand center_navbar_icon" href="{{path('app_accueil')}}">
+					<img class="icon_navbar" src="images/img_icon/icon5.png" alt="Icon site ">NovaSprite
+				</a>
+				<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
+				<div class="collapse navbar-collapse" id="navbarColor01">
+					<ul class="navbar-nav me-auto">
+
+						{% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+							<li class="nav-item">
+								<a class="nav-link " href="{{path('app_accueil')}}">Produit</a>
+							</li>
+							<li class="nav-item dropdown">
+								<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+									Login
+								</a>
+								<ul class="dropdown-menu">
+									<li class="nav-item">
+										<a class="nav-link" href="{{path('app_login')}}">Se connecter</a>
+									</li>
+									<li class="nav-item">
+										<a class="nav-link" href="{{path('app_register')}}">S'inscrire</a>
+									</li>
+								</ul>
+							</li>
+						{% else %}
+							{% if not is_granted('ROLE_ADMIN') %}
+								<li class="nav-item">
+									<a class="nav-link " href="{{path('app_accueil')}}">Produit</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="{{path("app_liste_favoris")}}">Mes favoris
+										<i class="bi bi-heart-fill"></i>
+									</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="{{path("app_liste_panier")}}">
+										<button type="button" class="btn btn-primary position-relative">
+											<i class="bi bi-basket"></i>
+											<span id="cart-count" class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+												{{ app.user.panier ? app.user.panier.ajouters|reduce((carry, a) => carry + a.quantite, 0) : 0 }}
+											</span>
+										</button>
+									</a>
+								</li>
+
+
+							{% else %}
+
+
+								<li class="nav-item dropdown">
+									<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+										Administration
+									</a>
+									<ul class="dropdown-menu">
+										<li class="nav-item">
+											<a class="nav-link" href="{{path("app_admin_ajout")}}">Ajout Produit</a>
+										</li>
+										<li class="nav-item">
+											<a class="nav-link" href="{{path("app_liste_utilisateur")}}">Utilisateurs</a>
+										</li>
+
+
+									</ul>
+								</li>
+
+							{% endif %}
+							<li class="nav-item">
+								<a class="nav-link" href="{{path("app_logout")}}">Se deconnecter</a>
+							</li>
+
+
+						{% endif %}
+					</ul>
+					{#<form class="d-flex">
+																<input class="form-control me-sm-2" type="search" placeholder="Search">
+																<button class="btn btn-secondary my-2 my-sm-0" type="submit">Search</button>
+															</form>#}
+				</div>
+			</div>
+		</nav>
+
+		<main>
+
+
+			{% block body %}{% endblock %}
+
+		</main>
+
+		<footer>
+			<div>
+				<p>
+					<span class="importente">By</span>
+					: ©DOMINOIS Thomas
+				</p>
+			</div>
+			<div>
+				<div>
+					<p>
+						<span class="importente">Date de création</span>
+						: ------------</p>
+				</div>
+			</div>
+
+
+		</footer>
+
+		{% block javascripts %}
+			<script>
+				const ACCUEIL_URL = "{{ path('app_accueil') }}";
+			</script>
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
+			<script src="JS/global.js"></script>
+
+		{% endblock %}
+	</body>
 </html>

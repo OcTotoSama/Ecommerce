@@ -1,0 +1,36 @@
+.container_register{
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    width: 450px;
+    margin-top: 50px;
+    padding: 20px;
+}
+
+.container_register h1{
+    align-items: start !important ;
+    justify-content: start !important;
+    font-weight: 600;
+    
+}
+
+.btn_register{
+    border-radius: 50px !important;
+    background-color: rgba(99, 87, 67, 0.486) !important;
+    width: 100%;
+    border: none;
+    padding: 18px;
+    margin-top: 25px;
+    color: brown;
+}
+
+
+main {
+    display: flex;
+}
+.back_login{
+    background:url(../images/img_icon/Example2.gif) center / cover no-repeat ;
+    /*background-attachment: fixed;
+    width: 100%;
+    height: 100%;*/
+    flex: 1;
+}
