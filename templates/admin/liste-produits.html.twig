@@ -1,0 +1,122 @@
+{% extends 'base.html.twig' %}
+{% block stylesheets %}
+	<link rel="stylesheet" href="https://bootswatch.com/5/sandstone/bootstrap.min.css">
+	<link rel="stylesheet" href="css/base.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+	<link rel="stylesheet" href="css/listeProduit.css">
+{% endblock %}
+{% block title %}
+	{{parent()}}Liste des contacts
+{% endblock %}
+
+{% block body %}
+
+
+	<div class="product-header">
+
+		<h1 class="product-title">
+			Liste des produits
+		</h1>
+
+		<a class="add-product-btn" href="{{ path('app_admin_ajout') }}">
+			<i class="bi bi-plus-circle-fill"></i>
+			Ajouter un produit
+		</a>
+
+	</div>
+
+
+	<div class="page-wrapper">
+		<div class="table-container text-primary">
+
+			<div class="table-responsive">
+
+				{{ form_start(form) }}
+
+
+				<div class="search-container">
+
+					<i class="bi bi-search search-icon"></i>
+
+					<input type="text" id="productSearch" class="product-search-input" placeholder="Rechercher un produit...">
+
+				</div>
+
+				<div class="table-responsive shadow-sm rounded-4 overflow-hidden mt-4">
+
+					<table class="table align-middle mb-0 custom-table">
+
+						<thead class="table-dark">
+							<tr class="text-uppercase small">
+								<th>Nom</th>
+								<th>Image</th>
+								<th>Description</th>
+								<th>Prix</th>
+								<th class="text-center">Modifier</th>
+								<th class="text-center">Supprimer</th>
+								<th class="text-center">Sélection</th>
+							</tr>
+						</thead>
+
+						<tbody>
+							{% for element in returns | sort((a, b) => a.name <=> b.name) %}
+
+								<tr class="product-row">
+
+									<td class="fw-semibold searchable">
+										{{ element.name | capitalize }}
+									</td>
+
+									<td>
+										<img src="{{ asset('images/img_produit/' ~ element.image) }}" alt="{{ element.name }}" class="product-image">
+									</td>
+
+									<td class="text-muted searchable">
+										{{ element.designation | capitalize }}
+									</td>
+
+									<td>
+
+
+										<span class="price-badge">
+											{{ element.prix | number_format(2, '.', '') }}
+											€
+										</span>
+									</td>
+
+									<td class="text-center">
+										<a href="{{ path('app_modifier_produits', {'id': element.id}) }}" class="action-icon">
+											<i class="bi bi-pen-fill"></i>
+										</a>
+									</td>
+
+									<td class="text-center">
+										<a href="{{ path('app_supprimer_produit', {'id': element.id}) }}" class="action-icon text-danger">
+											<i class="bi bi-trash-fill"></i>
+										</a>
+									</td>
+
+									<td class="text-center">
+										{{ form_widget(form.returns[element.id]) }}
+									</td>
+
+								</tr>
+
+							{% endfor %}
+						</tbody>
+
+					</table>
+
+				</div>
+
+				<div class="text-center mt-4">
+					{{ form_widget(form.supprimer, {'label': 'Supprimer les éléments sélectionnés','attr': {'class': 'btn btn-dark btn-lg px-5 py-3 rounded-3 fw-bold shadow-sm'}}) }}
+				</div>
+
+
+				{{ form_end(form) }}
+
+
+			</div>
+		</div>
+	{% endblock %}

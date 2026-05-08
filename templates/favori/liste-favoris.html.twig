@@ -30,7 +30,7 @@
 
 					<div class="card_anime" data-id="{{ produit.id }}">
 
-						<a href="javascript:void(0);" class="favori-toggle" data-id="{{ produit.id }}" data-url="{{ path('app_favori', {'id': produit.id}) }}">
+						<a href="javascript:void(0);" data-auth="true" class="favori-toggle" data-id="{{ produit.id }}" data-url="{{ path('app_favori', {'id': produit.id}) }}">
 
 							{% if not is_granted('IS_AUTHENTICATED_FULLY') %}
 								<i class="bi bi-heart favori"></i>

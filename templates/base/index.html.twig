@@ -33,20 +33,9 @@
 
 
 	<div class="wrap">
-		{% for produit in produits %}
-			<div
-				class="card_anime" data-id="returner">
-				{#<a href="{{ path('app_favori', {'id': produit.id}) }}" class="rouge" data-id="{{ produit.id }}">
-													{% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-														<i class="bi bi-heart favori"></i>
-													{% else %}
-														{% if produit in app.user.produits %}
-															<i class="bi bi-heart-fill favori"></i>
-														{% else %}
-															<i class="bi bi-heart favori"></i>
-														{% endif %}
-													{% endif %}
-												</a>#}
+		{% for produit in produits|sort((a, b) => a.name <=> b.name) %}
+			<div class="card_anime" data-id="returner">
+				
 				<a href="{% if is_granted('IS_AUTHENTICATED_FULLY') %}javascript:void(0); {% else %}{{ path('app_login') }}{% endif %}" class="favori-toggle" data-id="{{ produit.id }}" data-url="{{ path('app_favori', {'id': produit.id}) }}" data-auth="{{ is_granted('IS_AUTHENTICATED_FULLY') ? 'true' : 'false' }}">
 
 					{% if not is_granted('IS_AUTHENTICATED_FULLY') %}
@@ -59,9 +48,7 @@
 						{% endif %}
 					{% endif %}
 				</a>
-				{#<a href="{{ path('app_favori', {'id': produit.id}) }}" class="fav-btn rouge">
-																					<i class="bi bi-heart favori-icon"></i>
-																				</a>#}
+			
 				{% set image = 'images/img_produit/'~ produit.image %}
 				<div class="div_card_img">
 					<img class="card-img-top" src="{{asset(image)}}" alt="Image de {{produit.name}} ">
@@ -71,8 +58,6 @@
 					<p class="explain">{{produit.designation}}</p>
 					<p class="price">{{ produit.prix|number_format(2, '.', '') }}€</p>
 				</div>
-
-				{#<a href="{{path("app_panier",{'id':produit.id})}}" class="ajout_panier"><i class="bi bi-bag"></i>‎ Add to Cart</a>#}
 
 				<a href="{% if is_granted('IS_AUTHENTICATED_FULLY') %}javascript:void(0); {% else %}{{ path('app_login') }}{% endif %}" class="ajout-panier ajout_panier" data-id="{{ produit.id }}" data-url="{{ path('app_panier', {'id': produit.id}) }}" data-auth="{{ is_granted('IS_AUTHENTICATED_FULLY') ? 'true' : 'false' }}">
 

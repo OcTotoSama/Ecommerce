@@ -18,17 +18,13 @@ document.querySelectorAll('.ajout-panier').forEach(button => {
 
     button.addEventListener('click', function (e) {
 
-        const isAuthenticated = this.dataset.auth === 'true';
-
-        // ❌ pas connecté → laisser le lien fonctionner (redirect login)
-        if (!isAuthenticated) {
-            return;
-        }
+       
 
         // ✅ connecté → AJAX
         e.preventDefault();
 
-        const url = this.dataset.url;
+        // const url = this.dataset.url;
+        const url = this.getAttribute('href');
 
         const container = this.closest('.ajout_panier');
         const quantiteElement = container ? container.querySelector('.in-panier') : null;
@@ -230,3 +226,85 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const searchInput = document.getElementById("userSearch");
+
+    const rows = document.querySelectorAll(".user-row");
+
+    searchInput.addEventListener("keyup", () => {
+
+        const searchValue = searchInput.value.toLowerCase();
+
+        rows.forEach(row => {
+
+            const searchableCells = row.querySelectorAll(".searchable");
+
+            let matchFound = false;
+
+            searchableCells.forEach(cell => {
+
+                const text = cell.textContent.toLowerCase();
+
+                if (text.includes(searchValue)) {
+                    matchFound = true;
+                }
+
+            });
+
+            if (matchFound) {
+                row.style.display = "";
+            } else {
+                row.style.display = "none";
+            }
+
+        });
+
+    });
+
+});
+
+
+
+document.addEventListener("DOMContentLoaded", () => {
+
+    const productSearch = document.getElementById("productSearch");
+
+    if (!productSearch) return;
+
+    const productRows = document.querySelectorAll(".product-row");
+
+    productSearch.addEventListener("keyup", () => {
+
+        const searchValue = productSearch.value.toLowerCase();
+
+        productRows.forEach(row => {
+
+            const searchableCells = row.querySelectorAll(".searchable");
+
+            let matchFound = false;
+
+            searchableCells.forEach(cell => {
+
+                const text = cell.textContent.toLowerCase();
+
+                if (text.includes(searchValue)) {
+                    matchFound = true;
+                }
+
+            });
+
+            if (matchFound) {
+                row.style.display = "";
+            } else {
+                row.style.display = "none";
+            }
+
+        });
+
+    });
+
+});
