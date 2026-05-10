@@ -23,21 +23,12 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 180)]
     private ?string $email = null;
 
-    /**
-     * @var list<string> The user roles
-     */
     #[ORM\Column]
     private array $roles = [];
 
-    /**
-     * @var string The hashed password
-     */
     #[ORM\Column]
     private ?string $password = null;
 
-    /**
-     * @var Collection<int, Produit>
-     */
     #[ORM\ManyToMany(targetEntity: Produit::class, inversedBy: 'users')]
     private Collection $produits;
 
@@ -45,7 +36,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     private ?Panier $panier = null;
 
     #[ORM\Column]
-    private ?\DateTime $DateInscription = null;
+    private ?\DateTimeImmutable $dateInscription = null;
 
     #[ORM\Column(length: 50)]
     private ?string $name = null;
@@ -53,150 +44,129 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(length: 50)]
     private ?string $surname = null;
 
+    #[ORM\OneToMany(mappedBy: 'user', targetEntity: Commande::class)]
+    private Collection $commandes;
+
+    #[ORM\OneToMany(targetEntity: Message::class, mappedBy: 'auteur', orphanRemoval: true)]
+    private Collection $messages;
+
+    #[ORM\OneToMany(targetEntity: Evaluation::class, mappedBy: 'user', orphanRemoval: true)]
+    private Collection $evaluations;
+
+    #[ORM\Column(length: 255)]
+    private ?string $address = null;
+
+    #[ORM\Column(length: 10)]
+    private ?string $postalCode = null;
+
+    #[ORM\Column(length: 100)]
+    private ?string $city = null;
+
+    #[ORM\Column(length: 100)]
+    private ?string $country = null;
+
+    #[ORM\Column(options: ["default" => true])]
+    private bool $isActive = true;
+
     public function __construct()
     {
         $this->produits = new ArrayCollection();
+        $this->commandes = new ArrayCollection();
+        $this->messages = new ArrayCollection();
+        $this->evaluations = new ArrayCollection();
     }
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
+    public function getId(): ?int { return $this->id; }
 
-    public function getEmail(): ?string
-    {
-        return $this->email;
-    }
+    public function getEmail(): ?string { return $this->email; }
+    public function setEmail(string $email): static { $this->email = $email; return $this; }
 
-    public function setEmail(string $email): static
-    {
-        $this->email = $email;
+    public function getUserIdentifier(): string { return (string) $this->email; }
 
-        return $this;
-    }
-
-    /**
-     * A visual identifier that represents this user.
-     *
-     * @see UserInterface
-     */
-    public function getUserIdentifier(): string
-    {
-        return (string) $this->email;
-    }
-
-    /**
-     * @see UserInterface
-     */
     public function getRoles(): array
     {
         $roles = $this->roles;
-        // guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_USER';
-
         return array_unique($roles);
     }
 
-    /**
-     * @param list<string> $roles
-     */
     public function setRoles(array $roles): static
     {
         $this->roles = $roles;
-
         return $this;
     }
 
-    /**
-     * @see PasswordAuthenticatedUserInterface
-     */
-    public function getPassword(): ?string
-    {
-        return $this->password;
-    }
+    public function getPassword(): ?string { return $this->password; }
 
     public function setPassword(string $password): static
     {
         $this->password = $password;
-
         return $this;
     }
 
-    #[\Deprecated]
-    public function eraseCredentials(): void
-    {
-        // @deprecated, to be removed when upgrading to Symfony 8
-    }
+    public function eraseCredentials(): void {}
 
-    /**
-     * @return Collection<int, Produit>
-     */
-    public function getProduits(): Collection
-    {
-        return $this->produits;
-    }
+    public function getProduits(): Collection { return $this->produits; }
 
     public function addProduit(Produit $produit): static
     {
         if (!$this->produits->contains($produit)) {
             $this->produits->add($produit);
         }
-
         return $this;
     }
 
     public function removeProduit(Produit $produit): static
     {
         $this->produits->removeElement($produit);
-
         return $this;
     }
 
-    public function getPanier(): ?Panier
-    {
-        return $this->panier;
-    }
+    public function getPanier(): ?Panier { return $this->panier; }
 
     public function setPanier(?Panier $panier): static
     {
         $this->panier = $panier;
-
         return $this;
     }
 
-    public function getDateInscription(): ?\DateTime
+    public function getDateInscription(): ?\DateTimeImmutable
     {
-        return $this->DateInscription;
+        return $this->dateInscription;
     }
 
-    public function setDateInscription(\DateTime $DateInscription): static
+    public function setDateInscription(\DateTimeImmutable $dateInscription): static
     {
-        $this->DateInscription = $DateInscription;
-
+        $this->dateInscription = $dateInscription;
         return $this;
     }
 
-    public function getName(): ?string
+    public function getName(): ?string { return $this->name; }
+    public function setName(string $name): static { $this->name = $name; return $this; }
+
+    public function getSurname(): ?string { return $this->surname; }
+    public function setSurname(string $surname): static { $this->surname = $surname; return $this; }
+
+    public function getAddress(): ?string { return $this->address; }
+    public function setAddress(string $address): static { $this->address = $address; return $this; }
+
+    public function getPostalCode(): ?string { return $this->postalCode; }
+    public function setPostalCode(string $postalCode): static { $this->postalCode = $postalCode; return $this; }
+
+    public function getCity(): ?string { return $this->city; }
+    public function setCity(string $city): static { $this->city = $city; return $this; }
+
+    public function getCountry(): ?string { return $this->country; }
+    public function setCountry(string $country): static { $this->country = $country; return $this; }
+
+    public function isActive(): bool
     {
-        return $this->name;
+        return $this->isActive;
     }
 
-    public function setName(string $name): static
+    public function setIsActive(bool $isActive): static
     {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    public function getSurname(): ?string
-    {
-        return $this->surname;
-    }
-
-    public function setSurname(string $surname): static
-    {
-        $this->surname = $surname;
-
+        $this->isActive = $isActive;
         return $this;
     }
 }

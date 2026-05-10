@@ -19,11 +19,22 @@
 {% block body %}
 
 
-	{% if app.user.produits | length == 0 %}
-		<h1 id="favoris-title" class="text-center">Pas de favoris</h1>
-	{% else %}
-		<h1 id="favoris-title" class="text-center">Liste de favoris</h1>
+	{% if app.user.produits|length == 0 %}
 
+
+		<div class="empty-favoris-container">
+			<h1 class="favoris-title empty">Aucun favori</h1>
+
+			<p class="empty-text">
+				Vous n’avez pas encore ajouté de produit à vos favoris.
+			</p>
+		</div>
+
+
+	{% else %}
+		<h1 id="favoris-title" class="favoris-title">
+			Mes favoris
+		</h1>
 		<div class="wrap">
 			{% for produit in app.user.produits %}
 				{% if produit in app.user.produits %}
@@ -54,7 +65,7 @@
 							<p class="price">{{ produit.prix|number_format(2, '.', '') }}
 								€</p>
 						</div>
-						<a href="{{ path('app_panier', {'id': produit.id}) }}" class="ajout-panier ajout_panier" data-id="{{ produit.id }}">
+						<a href="{{ path('app_panier', {'id': produit.id}) }}" class="ajout-panier ajout_panier" data-id="{{ produit.id }}" data-url="{{ path('app_panier', {'id': produit.id}) }}" data-auth="{{ is_granted('IS_AUTHENTICATED_FULLY') ? 'true' : 'false' }}">
 							<i class="bi bi-bag"></i>
 							Add to Cart
 						</a>

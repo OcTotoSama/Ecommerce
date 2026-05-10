@@ -20,6 +20,7 @@ final class BaseController extends AbstractController
             'produits' => $produits,
         ]);
     }
+    
     #[Route('/redirect-access-denied', name: 'access_denied_redirect')]
     public function accessDenied(): Response
     {

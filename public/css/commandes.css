@@ -1,0 +1,523 @@
+/* =========================
+   PAGE
+========================= */
+
+.commandes-page {
+    padding: 70px 20px;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.commandes-header {
+    text-align: center;
+
+    margin-bottom: 50px;
+
+    padding-top: 70px;
+}
+
+/* =========================
+   TITRE PRINCIPAL
+========================= */
+
+.commandes-title {
+    font-size: 3rem;
+
+    font-weight: 800;
+
+    color: #212529;
+
+    position: relative;
+
+    display: inline-block;
+}
+
+.commandes-title::after {
+    content: "";
+
+    display: block;
+
+    width: 90px;
+    height: 4px;
+
+    background: #212529;
+
+    margin: 14px auto 0;
+
+    border-radius: 10px;
+}
+
+/* =========================
+   TITRES SECTIONS
+========================= */
+
+.section-title {
+    font-size: 1.4rem;
+
+    font-weight: 800;
+
+    color: #212529;
+
+    margin-bottom: 18px;
+
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.unread-title {
+    color: #4a4a4a;
+}
+
+/* =========================
+   CONTAINER TABLE
+========================= */
+
+.commandes-container {
+    width: 95%;
+
+    margin: auto;
+
+    background: white;
+
+    border-radius: 24px;
+
+    overflow: hidden;
+
+    box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.commandes-table {
+    margin: 0;
+
+    background: white;
+}
+
+/* HEADER */
+
+.commandes-table thead {
+    background-color: #f5f5f5;
+}
+
+.commandes-table thead th {
+
+    padding: 22px 18px;
+
+    border: none;
+
+    font-size: 0.95rem;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    color: #212529;
+
+    font-weight: 800;
+}
+
+/* CELLS */
+
+.commandes-table tbody td {
+
+    padding: 22px 18px;
+
+    vertical-align: middle;
+
+    border-bottom: 1px solid #f1f1f1;
+
+    color: #212529;
+
+    font-weight: 500;
+
+    background: white;
+
+    transition:
+        background-color 0.25s ease,
+        color 0.25s ease,
+        border-color 0.25s ease;
+}
+
+/* =========================
+   HOVER LIGNE
+========================= */
+
+.commandes-table tbody tr:hover td {
+    background-color: #f3f3f3;
+}
+
+/* email devient plus clair */
+.commandes-table tbody tr:hover .user-email {
+
+    background: #ffffff;
+
+    color: #212529;
+
+    border-color: #dcdcdc;
+}
+
+/* bouton tchat ressort */
+.commandes-table tbody tr:hover .chat-btn:not(:hover) {
+
+    background: #ffffff;
+
+    color: #212529;
+
+    border-color: #dcdcdc;
+}
+/* =========================
+   ORDER ID
+========================= */
+
+.order-id {
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 7px 14px;
+
+    border-radius: 999px;
+
+    background: #212529;
+
+    color: white;
+
+    font-weight: 800;
+
+    font-size: 0.85rem;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* =========================
+   CLIENT
+========================= */
+
+.client-block {
+    display: flex;
+
+    flex-direction: column;
+
+    gap: 4px;
+}
+
+.client-name {
+    font-weight: 700;
+
+    color: #212529;
+}
+
+.user-email {
+
+    font-size: 0.88rem;
+
+    color: #7a7a7a;
+
+    background: #f7f7f7;
+
+    padding: 5px 10px;
+
+    border-radius: 10px;
+
+    width: fit-content;
+
+    border: 1px solid #ececec;
+
+    transition: 0.25s ease;
+}
+
+/* =========================
+   DATE
+========================= */
+
+.date-cell {
+    white-space: nowrap;
+}
+
+/* =========================
+   PRICE
+========================= */
+
+.price-badge {
+
+    background: #212529;
+
+    color: white;
+
+    padding: 8px 14px;
+
+    border-radius: 10px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+/* =========================
+   BADGE ETAT
+========================= */
+
+.state-badge {
+
+    padding: 8px 14px;
+
+    border-radius: 999px;
+
+    font-size: 0.82rem;
+
+    font-weight: 700;
+
+    border: 1px solid transparent;
+}
+
+/* préparation */
+
+.bg-warning.state-badge {
+
+    background: #e7e7e7 !important;
+
+    color: #212529 !important;
+
+    border-color: #d7d7d7 !important;
+}
+
+/* en cours de livraison */
+
+.bg-info.state-badge {
+
+    background: #a9a9a9 !important;
+
+    color: #212529 !important;
+
+    border-color: #bbbbbb !important;
+}
+
+/* livré */
+
+.bg-success.state-badge {
+
+    background: #212529 !important;
+
+    color: white !important;
+
+    border-color: #212529 !important;
+}
+
+/* secondaire */
+
+.bg-secondary.state-badge {
+
+    background: #6c757d !important;
+
+    color: white !important;
+
+    border-color: #6c757d !important;
+}
+
+/* =========================
+   MSG BADGE
+========================= */
+
+.message-badge {
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 30px;
+    height: 30px;
+
+    border-radius: 999px;
+
+    background: #212529;
+
+    color: white;
+
+    font-size: 0.8rem;
+
+    font-weight: 800;
+}
+
+.no-message {
+    color: #9a9a9a;
+}
+
+/* =========================
+   ACTIONS
+========================= */
+
+.actions-group {
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+}
+
+.chat-btn,
+.edit-order-btn {
+
+    text-decoration: none;
+
+    padding: 10px 14px;
+
+    border-radius: 12px;
+
+    font-weight: 700;
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    transition: 0.25s ease;
+}
+
+/* CHAT */
+
+.chat-btn {
+
+    background: #f3f3f3;
+
+    color: #212529;
+
+    border: 1px solid #ececec;
+}
+
+.chat-btn:hover {
+
+    background: #212529;
+
+    color: white;
+
+    transform: translateY(-2px);
+}
+
+/* ETAT */
+
+.edit-order-btn {
+
+    background: #212529;
+
+    color: white;
+}
+
+.edit-order-btn:hover {
+
+    background: #8d8d8d;
+
+    color: white;
+
+    transform: translateY(-2px);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1400px) {
+
+    .commandes-container {
+        width: 98%;
+    }
+
+    .commandes-table {
+        font-size: 0.92rem;
+    }
+
+    .user-email {
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 1100px) {
+
+    .commandes-title {
+        font-size: 2.4rem;
+    }
+
+    .commandes-table {
+        font-size: 0.82rem;
+    }
+
+    .commandes-table thead th,
+    .commandes-table tbody td {
+        padding: 14px 10px;
+    }
+
+    .user-email {
+        font-size: 0.72rem;
+    }
+
+    .price-badge,
+    .state-badge {
+        font-size: 0.72rem;
+    }
+
+    .chat-btn,
+    .edit-order-btn {
+        font-size: 0.72rem;
+
+        padding: 8px 10px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .commandes-page {
+        padding: 50px 8px;
+    }
+
+    .commandes-title {
+        font-size: 2rem;
+    }
+
+    .section-title {
+        font-size: 1.1rem;
+    }
+
+    .commandes-container {
+        border-radius: 18px;
+    }
+
+    .commandes-table {
+        font-size: 0.72rem;
+    }
+
+    .commandes-table thead th,
+    .commandes-table tbody td {
+        padding: 10px 6px;
+    }
+
+    .user-email {
+        font-size: 0.62rem;
+
+        padding: 4px 7px;
+    }
+
+    .actions-group {
+        gap: 6px;
+    }
+
+    .chat-btn,
+    .edit-order-btn {
+        font-size: 0.65rem;
+
+        padding: 6px 8px;
+
+        border-radius: 8px;
+    }
+}

@@ -1,0 +1,12 @@
+.etoile {
+    font-size: 1.5rem;
+    color: #ccc;
+    cursor: pointer;
+    transition: color 0.15s;
+}
+
+.etoile:hover,
+.etoile.hover,
+.etoile.active {
+    color: #f5a623;
+}

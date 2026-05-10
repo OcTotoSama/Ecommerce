@@ -1,0 +1,136 @@
+{% extends 'base.html.twig' %}
+{% block title %}Mon profil{% endblock %}
+
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://bootswatch.com/5/sandstone/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+    <link rel="stylesheet" href="{{ asset('css/base.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/profil.css') }}">
+{% endblock %}
+
+{% block body %}
+
+<div class="profile-page">
+
+    <div class="user-header">
+        <h1 class="user-title">Mon profil</h1>
+    </div>
+
+    <div class="page-wrapper">
+
+        <div class="table-container">
+
+            {# FLASH #}
+            <div class="flash-zone mb-3">
+                {% for type, messages in app.flashes %}
+                    {% for message in messages %}
+                        <div class="alert custom-alert alert-{{ type }}">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+                {% endfor %}
+            </div>
+
+            {# ================= INFOS ================= #}
+            <div class="profile-block">
+
+                <h5 class="profile-block-title">
+                    <i class="bi bi-person"></i> Informations personnelles
+                </h5>
+
+                {{ form_start(formInfo) }}
+
+                <div class="form-grid">
+                    <div>{{ form_label(formInfo.name) }}{{ form_widget(formInfo.name) }}</div>
+                    <div>{{ form_label(formInfo.surname) }}{{ form_widget(formInfo.surname) }}</div>
+                    <div class="full">{{ form_label(formInfo.email) }}{{ form_widget(formInfo.email) }}</div>
+                    <div class="full">{{ form_label(formInfo.address) }}{{ form_widget(formInfo.address) }}</div>
+                    <div>{{ form_label(formInfo.postalCode) }}{{ form_widget(formInfo.postalCode) }}</div>
+                    <div>{{ form_label(formInfo.city) }}{{ form_widget(formInfo.city) }}</div>
+                    <div>{{ form_label(formInfo.country) }}{{ form_widget(formInfo.country) }}</div>
+                </div>
+
+                <div class="profile-actions">
+                    {{ form_widget(formInfo.sauvegarder) }}
+                </div>
+
+                {{ form_end(formInfo) }}
+
+            </div>
+
+            {# ================= PASSWORD ================= #}
+            <div class="profile-block">
+
+                <h5 class="profile-block-title">
+                    <i class="bi bi-shield-lock"></i> Mot de passe
+                </h5>
+
+                {{ form_start(formPassword) }}
+
+                <div class="form-stack">
+                    <div>{{ form_label(formPassword.ancienPassword) }}{{ form_widget(formPassword.ancienPassword) }}</div>
+                    <div>{{ form_label(formPassword.nouveauPassword.first) }}{{ form_widget(formPassword.nouveauPassword.first) }}</div>
+                    <div>{{ form_label(formPassword.nouveauPassword.second) }}{{ form_widget(formPassword.nouveauPassword.second) }}</div>
+                </div>
+
+                <div class="profile-actions">
+                    {{ form_widget(formPassword.modifier) }}
+                </div>
+
+                {{ form_end(formPassword) }}
+
+            </div>
+
+            {# ================= DANGER ================= #}
+            <div class="profile-block danger">
+
+                <h5 class="profile-block-title danger">
+                    <i class="bi bi-exclamation-triangle"></i> Zone dangereuse
+                </h5>
+
+                <p class="text-muted small">
+                    La suppression du compte est irréversible sans contact administrateur.
+                </p>
+
+                <button type="button"
+                        class="btn btn-outline-danger w-100"
+                        data-bs-toggle="modal"
+                        data-bs-target="#modalSupprimer">
+                    Désactiver mon compte
+                </button>
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{# MODAL inchangé #}
+<div class="modal fade" id="modalSupprimer" tabindex="-1">
+    <div class="modal-dialog">
+        <div class="modal-content">
+
+            <div class="modal-header">
+                <h5 class="modal-title text-danger">Confirmer</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+            </div>
+
+            <div class="modal-body">
+                Êtes-vous sûr de vouloir désactiver votre compte ?
+            </div>
+
+            <div class="modal-footer">
+                <button class="btn btn-secondary" data-bs-dismiss="modal">Annuler</button>
+
+                <form method="post" action="{{ path('app_profil_supprimer') }}">
+                    <input type="hidden" name="_token" value="{{ csrf_token('supprimer_compte') }}">
+                    <button class="btn btn-danger">Confirmer</button>
+                </form>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+{% endblock %}

@@ -39,10 +39,29 @@ class Produit
     #[ORM\Column(length: 75)]
     private ?string $name = null;
 
+    /**
+     * @var Collection<int, LigneCommande>
+     */
+    #[ORM\OneToMany(targetEntity: LigneCommande::class, mappedBy: 'produit')]
+    private Collection $ligneCommandes;
+
+    /**
+     * @var Collection<int, Evaluation>
+     */
+    #[ORM\OneToMany(
+        targetEntity: Evaluation::class,
+        mappedBy: 'produit',
+        cascade: ['remove'],
+        orphanRemoval: true
+    )]
+    private Collection $evaluations;
+
     public function __construct()
     {
         $this->users = new ArrayCollection();
         $this->ajouters = new ArrayCollection();
+        $this->ligneCommandes = new ArrayCollection();
+        $this->evaluations = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -134,7 +153,6 @@ class Produit
     public function removeAjouter(Ajouter $ajouter): static
     {
         if ($this->ajouters->removeElement($ajouter)) {
-            // set the owning side to null (unless already changed)
             if ($ajouter->getProduit() === $this) {
                 $ajouter->setProduit(null);
             }
@@ -153,5 +171,78 @@ class Produit
         $this->name = $name;
 
         return $this;
+    }
+
+    /**
+     * @return Collection<int, LigneCommande>
+     */
+    public function getLigneCommandes(): Collection
+    {
+        return $this->ligneCommandes;
+    }
+
+    public function addLigneCommande(LigneCommande $ligneCommande): static
+    {
+        if (!$this->ligneCommandes->contains($ligneCommande)) {
+            $this->ligneCommandes->add($ligneCommande);
+            $ligneCommande->setProduit($this);
+        }
+
+        return $this;
+    }
+
+    public function removeLigneCommande(LigneCommande $ligneCommande): static
+    {
+        if ($this->ligneCommandes->removeElement($ligneCommande)) {
+            if ($ligneCommande->getProduit() === $this) {
+                $ligneCommande->setProduit(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Evaluation>
+     */
+    public function getEvaluations(): Collection
+    {
+        return $this->evaluations;
+    }
+
+    public function addEvaluation(Evaluation $evaluation): static
+    {
+        if (!$this->evaluations->contains($evaluation)) {
+            $this->evaluations->add($evaluation);
+            $evaluation->setProduit($this);
+        }
+
+        return $this;
+    }
+
+    public function removeEvaluation(Evaluation $evaluation): static
+    {
+        if ($this->evaluations->removeElement($evaluation)) {
+            if ($evaluation->getProduit() === $this) {
+                $evaluation->setProduit(null);
+            }
+        }
+
+        return $this;
+    }
+
+    public function getMoyenneNotes(): ?float
+    {
+        if ($this->evaluations->isEmpty()) {
+            return null;
+        }
+
+        $total = array_sum(
+            $this->evaluations
+                ->map(fn($evaluation) => $evaluation->getNote())
+                ->toArray()
+        );
+
+        return round($total / $this->evaluations->count(), 1);
     }
 }

@@ -1,0 +1,125 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="https://bootswatch.com/5/sandstone/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+	<link rel="stylesheet" href="{{ asset('css/base.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/recap-commande.css') }}">
+{% endblock %}
+
+{% block title %}
+	Récapitulatif de commande
+{% endblock %}
+
+{% block body %}
+
+	<div class="recap-page">
+
+		<h1 class="recap-title">
+			Récapitulatif de votre commande
+		</h1>
+
+		<form action="{{ path('app_commande_passer') }}" method="post" id="form-commande">
+
+			<div class="recap-container">
+
+				<div class="table-responsive recap-table-wrapper">
+
+					<table class="table recap-table align-middle">
+
+						<thead>
+							<tr>
+								<th>Sélection</th>
+								<th>Produit</th>
+								<th>Prix unitaire</th>
+								<th>Quantité</th>
+								<th>Sous-total</th>
+							</tr>
+						</thead>
+
+						<tbody>
+
+							{% for ajouter in ajouters %}
+
+								<tr>
+
+									<td>
+										<input type="checkbox" name="ajouter_ids[]" value="{{ ajouter.id }}" class="item-check" data-prix="{{ ajouter.produit.prix }}" data-quantite="{{ ajouter.quantite }}" checked>
+									</td>
+
+									<td class="product-name">
+										{{ ajouter.produit.designation }}
+									</td>
+
+									<td>
+										<span class="price-tag">
+											{{ ajouter.produit.prix|number_format(2, '.', '') }}
+											€
+										</span>
+									</td>
+
+									<td>
+										<span class="qty-badge">
+											{{ ajouter.quantite }}
+										</span>
+									</td>
+
+									<td class="ligne-total">
+										{{ (ajouter.produit.prix * ajouter.quantite)|number_format(2, '.', '') }}
+										€
+									</td>
+
+								</tr>
+
+							{% endfor %}
+
+						</tbody>
+
+					</table>
+
+				</div>
+
+				<div class="recap-summary">
+
+					<div class="summary-line">
+						<span>Sous-total HT</span>
+						<strong id="recap-subtotal">0.00 €</strong>
+					</div>
+
+					<div class="summary-line">
+						<span>TVA (20%)</span>
+						<strong id="recap-tva">0.00 €</strong>
+					</div>
+
+					<div class="summary-total">
+						<span>Total TTC</span>
+						<strong id="recap-total">0.00 €</strong>
+					</div>
+
+				</div>
+
+				<div class="recap-actions">
+
+					<a href="{{ path('app_liste_panier') }}" class="btn-back">
+						Retour au panier
+					</a>
+
+					<button type="submit" class="btn-confirm">
+						Passer la commande
+					</button>
+
+				</div>
+
+			</div>
+
+		</form>
+
+	</div>
+
+	{% block javascripts %}
+		{{ parent() }}
+		<script src="{{ asset('JS/recap-commande.js') }}"></script>
+	{% endblock %}
+
+{% endblock %}

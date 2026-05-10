@@ -1,0 +1,71 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="https://bootswatch.com/5/sandstone/bootstrap.min.css">
+	<link rel="stylesheet" href="{{ asset('css/base.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/modifierEtatCommande.css') }}">
+{% endblock %}
+
+{% block title %}
+	Modifier l'état
+{% endblock %}
+
+{% block body %}
+
+	<div class="order-edit-page">
+
+		<div class="order-edit-container">
+
+			<h1 class="order-edit-title">
+				Modifier la commande
+			</h1>
+
+			<div class="order-info">
+
+				<div class="order-info-item">
+					<span class="label">Commande :</span>
+					<span class="value">#{{ commande.id }}</span>
+				</div>
+
+				<div class="order-info-item">
+					<span class="label">Client :</span>
+					<span class="value">
+						{{ commande.user.name }}
+						{{ commande.user.surname }}
+					</span>
+				</div>
+				<div class="order-info-item">
+					<span class="label">Email :</span>
+					<span class="value">
+						{{ commande.user.email }}
+					</span>
+				</div>
+
+
+			</div>
+
+			{{ form_start(form) }}
+
+			<div class="form-container">
+				{{ form_widget(form) }}
+			</div>
+
+			<div class="button-group">
+
+				<button class="save-btn">
+					Enregistrer les modifications
+				</button>
+
+				<a href="{{ path('app_admin_commandes') }}" class="back-btn">
+					Retour
+				</a>
+
+			</div>
+
+			{{ form_end(form) }}
+
+		</div>
+
+	</div>
+
+{% endblock %}

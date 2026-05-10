@@ -100,30 +100,7 @@ main {
     margin-top: 10px;
     text-align: center;
 }
-/*
-.div-achat-continu {
-    width: 100%;
-    min-height: 80vh; /* centre verticalement dans la page 
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-.btn-achat-continu {
-    background: #111111;
-    border-radius: 12px;
-    text-decoration: none;
-    color: white;
-    padding: 15px 28px;
-    font-weight: 600;
-    letter-spacing: 0.3px;
-    transition: all 0.25s ease;
-}
 
-.btn-achat-continu:hover {
-    background: #000;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 20px rgba(0,0,0,0.15);
-}*/
 
 
 .back-panier{
@@ -136,7 +113,7 @@ main{
     background-attachment: fixed;
     
 }
-
+/*
 .box_blur_panier{
     padding: 20px;
     border-radius: 10px;
@@ -145,4 +122,75 @@ main{
     background-color: #ffffff41;
     margin: 0 50px ;
     margin-bottom: 20px;
+}*/
+
+.box_blur_panier {
+    padding: 18px 24px;
+
+    border-radius: 14px;
+
+    backdrop-filter: blur(6px);
+
+    background-color: rgba(255,255,255,0.18);
+
+    border: 1px solid rgba(255,255,255,0.25);
+
+    margin: 0 50px 20px;
+
+    color: white;
+
+    font-weight: 700;
+}
+
+
+/* =========================
+   TITRE PANIER
+========================= */
+
+.cart-title {
+    font-size: 3rem;
+    font-weight: 800;
+
+    color: #ffffff;
+
+    text-align: center;
+
+    margin: 0;
+
+    padding-top: 120px;
+    padding-bottom: 40px;
+
+    position: relative;
+
+    text-shadow: 0 3px 10px rgba(0,0,0,0.6);
+}
+
+/* petite ligne sous le titre */
+.cart-title::after {
+    content: "";
+
+    display: block;
+
+    width: 90px;
+    height: 4px;
+
+    background-color: #ffffff;
+
+    margin: 14px auto 0;
+
+    border-radius: 10px;
+
+    opacity: 0.9;
+}
+
+/* =========================
+   ÉTAT VIDE
+========================= */
+
+.cart-title.empty {
+    color: #e5e5e5;
+}
+
+.cart-title.empty::after {
+    background-color: #e5e5e5;
 }

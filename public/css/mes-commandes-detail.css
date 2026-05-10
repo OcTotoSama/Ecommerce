@@ -1,0 +1,337 @@
+.commande-detail-page {
+
+    padding: 120px 20px 60px;
+}
+
+.commande-detail-container {
+
+    width: 95%;
+
+    max-width: 1300px;
+
+    margin: auto;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.detail-header {
+
+    margin-bottom: 40px;
+}
+
+.back-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    text-decoration: none;
+
+    background: #212529;
+
+    color: white;
+
+    padding: 10px 16px;
+
+    border-radius: 12px;
+
+    font-weight: 700;
+
+    margin-bottom: 20px;
+
+    transition: 0.25s ease;
+}
+
+.back-btn:hover {
+
+    background: #000;
+
+    color: white;
+
+    transform: translateY(-2px);
+}
+
+.detail-title {
+
+    font-size: 3rem;
+
+    font-weight: 800;
+
+    color: #212529;
+
+    margin-bottom: 10px;
+}
+
+.detail-date {
+
+    color: #7a7a7a;
+
+    font-weight: 500;
+}
+
+/* =========================
+   SECTION
+========================= */
+
+.chat-section,
+.order-section {
+
+    background: white;
+
+    border-radius: 24px;
+
+    padding: 30px;
+
+    margin-bottom: 30px;
+
+    box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+}
+
+.section-title {
+
+    font-size: 1.5rem;
+
+    font-weight: 800;
+
+    margin-bottom: 25px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+/* =========================
+   CHAT
+========================= */
+
+.chat-box {
+
+    height: 450px;
+
+    overflow-y: auto;
+
+    background: #f7f7f7;
+
+    border-radius: 20px;
+
+    padding: 20px;
+
+    margin-bottom: 20px;
+}
+
+.message-bubble {
+
+    max-width: 70%;
+
+    padding: 14px 18px;
+
+    border-radius: 18px;
+}
+
+.support-message {
+
+    background: white;
+
+    border: 1px solid #e7e7e7;
+
+    color: #212529;
+}
+
+.user-message {
+
+    background: #212529;
+
+    color: white;
+}
+
+.message-author {
+
+    font-weight: 700;
+
+    font-size: 0.85rem;
+
+    margin-bottom: 6px;
+}
+
+.message-date {
+
+    font-size: 0.72rem;
+
+    opacity: 0.7;
+
+    margin-top: 8px;
+
+    text-align: right;
+}
+
+.empty-chat {
+
+    text-align: center;
+
+    color: #8b8b8b;
+
+    padding-top: 100px;
+}
+
+/* =========================
+   FORM CHAT
+========================= */
+
+.chat-form {
+
+    display: flex;
+
+    gap: 12px;
+}
+
+.chat-input {
+
+    flex: 1;
+
+    border: 1px solid #dcdcdc;
+
+    border-radius: 14px;
+
+    padding: 14px 18px;
+
+    outline: none;
+
+    transition: 0.25s ease;
+}
+
+.chat-input:focus {
+
+    border-color: #212529;
+
+    box-shadow: 0 0 0 4px rgba(0,0,0,0.05);
+}
+
+.send-btn {
+
+    border: none;
+
+    background: #212529;
+
+    color: white;
+
+    width: 56px;
+
+    border-radius: 14px;
+
+    transition: 0.25s ease;
+}
+
+.send-btn:hover {
+
+    background: #000;
+
+    transform: translateY(-2px);
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.order-table {
+
+    margin: 0;
+}
+
+.order-table thead {
+
+    background: #f5f5f5;
+}
+
+.order-table thead th {
+
+    padding: 18px;
+
+    border: none;
+
+    font-size: 0.9rem;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+}
+
+.order-table tbody td {
+
+    padding: 18px;
+
+    vertical-align: middle;
+
+    border-bottom: 1px solid #f1f1f1;
+}
+
+.order-table tbody tr:hover td {
+
+    background: #f7f7f7;
+}
+
+/* =========================
+   TOTAL
+========================= */
+
+.order-total {
+
+    margin-top: 25px;
+
+    background: #212529;
+
+    color: white;
+
+    border-radius: 18px;
+
+    padding: 20px 25px;
+
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    font-size: 1.2rem;
+
+    font-weight: 700;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+    .detail-title {
+
+        font-size: 2rem;
+    }
+
+    .chat-section,
+    .order-section {
+
+        padding: 20px;
+    }
+
+    .message-bubble {
+
+        max-width: 90%;
+    }
+
+    .order-table {
+
+        font-size: 0.78rem;
+    }
+
+    .order-table thead th,
+    .order-table tbody td {
+
+        padding: 10px 8px;
+    }
+}

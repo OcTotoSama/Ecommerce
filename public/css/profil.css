@@ -1,0 +1,138 @@
+/* =========================
+   PAGE PROFIL
+========================= */
+
+.profile-page {
+    padding: 60px 20px;
+}
+
+/* =========================
+   HEADER (cohérent site)
+========================= */
+
+.user-header {
+    display: flex;
+    justify-content: center;
+    margin: 70px 0 40px;
+}
+
+.user-title {
+    font-size: 3rem;
+    font-weight: 800;
+    color: #212529;
+    text-align: center;
+    position: relative;
+}
+
+.user-title::after {
+    content: "";
+    display: block;
+    width: 80px;
+    height: 4px;
+    background: #212529;
+    margin: 12px auto 0;
+    border-radius: 10px;
+}
+
+/* =========================
+   CONTAINER GLOBAL
+========================= */
+
+.page-wrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.table-container {
+    width: 75%;
+}
+
+/* =========================
+   BLOCS
+========================= */
+
+.profile-block {
+    background: white;
+    border-radius: 20px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 6px 25px rgba(0,0,0,0.06);
+}
+
+/* TITRE BLOC */
+.profile-block-title {
+    font-weight: 800;
+    font-size: 1.2rem;
+    margin-bottom: 20px;
+    color: #212529;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+/* =========================
+   FORM GRID
+========================= */
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 15px;
+}
+
+.form-grid .full {
+    grid-column: span 2;
+}
+
+.form-stack {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* =========================
+   ACTIONS
+========================= */
+
+.profile-actions {
+    margin-top: 20px;
+}
+
+/* bouton submit (force thème noir) */
+.profile-block button,
+.profile-block input[type="submit"] {
+    background: #212529 !important;
+    border: none !important;
+    color: white !important;
+    padding: 12px 18px;
+    border-radius: 12px;
+    font-weight: 700;
+    transition: 0.2s ease;
+}
+
+.profile-block button:hover,
+.profile-block input[type="submit"]:hover {
+    background: #8d8d8d !important;
+}
+
+/* =========================
+   DANGER BLOCK
+========================= */
+
+.profile-block.danger {
+    border: 1px solid #e5e5e5;
+}
+
+.profile-block-title.danger {
+    color: #b91c1c;
+}
+
+/* =========================
+   ALERT CLEAN (sans effet Bootstrap moche)
+========================= */
+
+.custom-alert {
+    border-radius: 12px;
+    font-weight: 600;
+    border: none;
+}

@@ -59,6 +59,7 @@
 										<i class="bi bi-heart-fill"></i>
 									</a>
 								</li>
+
 								<li class="nav-item">
 									<a class="nav-link" href="{{path("app_liste_panier")}}">
 										<button type="button" class="btn btn-primary position-relative">
@@ -69,28 +70,38 @@
 										</button>
 									</a>
 								</li>
+								<li class="nav-item">
+									<a class="nav-link " href="{{path('app_mes_commandes')}}">Commandes</a>
+								</li>
 
 
 							{% else %}
 
+								<h5 class="admin-badge">
+									Administration
+								</h5>
+
 
 								<li class="nav-item dropdown">
-									<a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-										Administration
-									</a>
+									<h1 class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+										Produit
+									</h1>
 									<ul class="dropdown-menu">
-										<li class="nav-item">
-											<a class="nav-link" href="{{path("app_admin_ajout")}}">Ajout Produit</a>
-										</li>
 										<li class="nav-item">
 											<a class="nav-link" href="{{path("app_liste_produits")}}">Liste Produit</a>
 										</li>
 										<li class="nav-item">
-											<a class="nav-link" href="{{path("app_liste_utilisateur")}}">Utilisateurs</a>
+											<a class="nav-link" href="{{path("app_admin_ajout")}}">Ajout Produit</a>
 										</li>
 
-
 									</ul>
+								</li>
+
+								<li class="nav-item">
+									<a class="nav-link" href="{{path("app_liste_utilisateur")}}">Utilisateurs</a>
+								</li>
+								<li class="nav-item">
+									<a class="nav-link" href="{{path("app_admin_commandes")}}">comande</a>
 								</li>
 
 							{% endif %}

@@ -1,58 +1,68 @@
+
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}
+    <link rel="stylesheet" href="https://bootswatch.com/5/sandstone/bootstrap.min.css">
+    <link rel="stylesheet" href="{{ asset('css/base.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/ajoutProduit.css') }}">
+{% endblock %}
+
 {% block title %}
-	Ajout Produit
+    Ajout Produit
 {% endblock %}
 
 {% block body %}
-	<div class="container d-flex justify-content-center align-items-center" style="min-height: 80vh;">
-		<div class="col-lg-6 col-md-8 col-sm-10">
 
-			<div class="card shadow-lg border-0" style="background:#fff;">
-				<div class="card-header text-center" style="background:#000; color:#fff;">
-					<h2 class="my-2 fw-bold">Ajout Produit</h2>
-				</div>
+<div class="product-page">
 
-				<div class="card-body px-5 py-4">
+    <h1 class="product-form-title">
+        Ajouter un produit
+    </h1>
 
-					{{ form_start(form) }}
+    <div class="product-form-container">
 
-					<div class="mb-3">
-						{{ form_label(form.name) }}
-						{{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
-					</div>
+        {{ form_start(form) }}
 
-					<div class="mb-3">
-						{{ form_label(form.designation) }}
-						{{ form_widget(form.designation, {'attr': {'class': 'form-control'}}) }}
-					</div>
+            <div class="form-group-custom">
+                {{ form_label(form.name) }}
+                {{ form_widget(form.name, {'attr': {'class': 'form-control'}}) }}
+            </div>
 
-					<div class="mb-3">
-						{{ form_label(form.image) }}
-						{{ form_widget(form.image, {'attr': {'class': 'form-control'}}) }}
-					</div>
+            <div class="form-group-custom">
+                {{ form_label(form.designation) }}
+                {{ form_widget(form.designation, {'attr': {'class': 'form-control'}}) }}
+            </div>
 
-					<div class="mb-3">
-						{{ form_label(form.prix) }}
-						{{ form_widget(form.prix, {'attr': {'class': 'form-control'}}) }}
-					</div>
+            <div class="form-group-custom">
+                {{ form_label(form.image) }}
+                {{ form_widget(form.image, {'attr': {'class': 'form-control'}}) }}
+            </div>
 
-					<div class="text-center mt-4">
-						<button class="btn btn-dark px-4 py-2 rounded-1 fw-bold">
-                        
-							Ajouter
-						</button>
-					</div>
+            <div class="form-group-custom">
+                {{ form_label(form.prix) }}
+                {{ form_widget(form.prix, {'attr': {'class': 'form-control'}}) }}
+            </div>
 
-					{{ form_end(form) }}
-					<div class="text-center">
-						<button class="btn mt-3 rounded-1" >
-							<a class="nav-link" href="{{path('app_liste_produits')}}">Voir la liste des produits</a>
-						</button>
-					</div>
+            <div class="submit-container">
 
-				</div>
-			</div>
-		</div>
-	</div>
+                <button class="submit-btn" type="submit">
+                    Ajouter le produit
+                </button>
+
+            </div>
+
+        {{ form_end(form) }}
+
+        <div class="back-button-container">
+
+            <a class="back-btn" href="{{ path('app_liste_produits') }}">
+                Voir la liste des produits
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
 {% endblock %}

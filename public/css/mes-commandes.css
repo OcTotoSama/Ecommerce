@@ -1,0 +1,451 @@
+/* =========================
+   PAGE
+========================= */
+
+.mes-commandes-page {
+
+    padding: 140px 20px 60px;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.mes-commandes-header {
+
+    text-align: center;
+
+    margin-bottom: 50px;
+}
+
+.mes-commandes-title {
+
+    font-size: 3rem;
+
+    font-weight: 800;
+
+    color: #212529;
+
+    position: relative;
+
+    display: inline-block;
+
+    margin-bottom: 20px;
+}
+
+.mes-commandes-title::after {
+
+    content: "";
+
+    display: block;
+
+    width: 90px;
+    height: 4px;
+
+    background: #212529;
+
+    margin: 14px auto 0;
+
+    border-radius: 10px;
+}
+
+.mes-commandes-subtitle {
+
+    color: #7a7a7a;
+
+    font-size: 1rem;
+
+    margin-top: 10px;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.mes-commandes-container {
+
+    width: 92%;
+
+    margin: auto;
+
+    background: white;
+
+    border-radius: 24px;
+
+    overflow: hidden;
+
+    box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.mes-commandes-table {
+
+    margin: 0;
+
+    background: white;
+}
+
+.mes-commandes-table thead {
+
+    background: #f5f5f5;
+}
+
+.mes-commandes-table thead th {
+
+    padding: 22px 18px;
+
+    border: none;
+
+    font-size: 0.95rem;
+
+    text-transform: uppercase;
+
+    letter-spacing: 1px;
+
+    color: #212529;
+
+    font-weight: 800;
+}
+
+.mes-commandes-table tbody td {
+
+    padding: 22px 18px;
+
+    vertical-align: middle;
+
+    border-bottom: 1px solid #f1f1f1;
+
+    background: white;
+
+    color: #212529;
+
+    font-weight: 500;
+
+    transition: background-color 0.25s ease;
+}
+
+/* =========================
+   HOVER
+========================= */
+
+.mes-commandes-table tbody tr:hover td {
+
+    background: #f5f5f5;
+}
+
+/* =========================
+   ORDER ID
+========================= */
+
+.order-id {
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    padding: 7px 14px;
+
+    border-radius: 999px;
+
+    background: #212529;
+
+    color: white;
+
+    font-weight: 800;
+
+    font-size: 0.85rem;
+
+    box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+/* =========================
+   DATE
+========================= */
+
+.date-cell {
+
+    white-space: nowrap;
+}
+
+/* =========================
+   PRICE
+========================= */
+
+.price-badge {
+
+    background: #212529;
+
+    color: white;
+
+    padding: 8px 14px;
+
+    border-radius: 10px;
+
+    font-weight: 700;
+
+    white-space: nowrap;
+}
+
+/* =========================
+   ETAT
+========================= */
+
+.state-badge {
+
+    padding: 8px 14px;
+
+    border-radius: 999px;
+
+    font-size: 0.82rem;
+
+    font-weight: 700;
+}
+
+/* préparation */
+
+.bg-warning.state-badge {
+
+    background: #ececec !important;
+
+    color: #212529 !important;
+}
+
+/* livraison */
+
+.bg-info.state-badge {
+
+    background: #bdbdbd !important;
+
+    color: #212529 !important;
+}
+
+/* livré */
+
+.bg-success.state-badge {
+
+    background: #212529 !important;
+
+    color: white !important;
+}
+
+/* =========================
+   MESSAGE BADGE
+========================= */
+
+.message-badge {
+
+    display: inline-flex;
+
+    align-items: center;
+    justify-content: center;
+
+    min-width: 32px;
+    height: 32px;
+
+    border-radius: 999px;
+
+    background: #212529;
+
+    color: white;
+
+    font-size: 0.82rem;
+
+    font-weight: 800;
+}
+
+.no-message {
+
+    color: #9a9a9a;
+}
+
+/* =========================
+   BUTTON
+========================= */
+
+.detail-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    text-decoration: none;
+
+    background: #f3f3f3;
+
+    color: #212529;
+
+    padding: 10px 14px;
+
+    border-radius: 12px;
+
+    font-weight: 700;
+
+    transition: 0.25s ease;
+}
+
+.detail-btn:hover {
+
+    background: #212529;
+
+    color: white;
+
+    transform: translateY(-2px);
+}
+
+/* =========================
+   EMPTY
+========================= */
+
+.empty-orders {
+
+    width: 92%;
+
+    margin: auto;
+
+    background: white;
+
+    border-radius: 24px;
+
+    padding: 70px 30px;
+
+    text-align: center;
+
+    box-shadow: 0 10px 35px rgba(0,0,0,0.08);
+}
+
+.empty-orders-icon {
+
+    font-size: 4rem;
+
+    color: #212529;
+
+    margin-bottom: 20px;
+}
+
+.empty-orders h2 {
+
+    font-weight: 800;
+
+    margin-bottom: 10px;
+}
+
+.empty-orders p {
+
+    color: #7a7a7a;
+
+    margin-bottom: 30px;
+}
+
+.shop-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    justify-content: center;
+
+    text-decoration: none;
+
+    background: #212529;
+
+    color: white;
+
+    padding: 14px 24px;
+
+    border-radius: 14px;
+
+    font-weight: 700;
+
+    transition: 0.25s ease;
+}
+
+.shop-btn:hover {
+
+    background: #000;
+
+    color: white;
+
+    transform: translateY(-2px);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1100px) {
+
+    .mes-commandes-title {
+
+        font-size: 2.3rem;
+    }
+
+    .mes-commandes-table {
+
+        font-size: 0.85rem;
+    }
+
+    .mes-commandes-table thead th,
+    .mes-commandes-table tbody td {
+
+        padding: 14px 10px;
+    }
+
+    .detail-btn {
+
+        font-size: 0.75rem;
+
+        padding: 8px 10px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .mes-commandes-page {
+
+        padding: 120px 8px 40px;
+    }
+
+    .mes-commandes-title {
+
+        font-size: 2rem;
+    }
+
+    .mes-commandes-container {
+
+        width: 100%;
+
+        border-radius: 18px;
+    }
+
+    .mes-commandes-table {
+
+        font-size: 0.72rem;
+    }
+
+    .mes-commandes-table thead th,
+    .mes-commandes-table tbody td {
+
+        padding: 10px 6px;
+    }
+
+    .detail-btn {
+
+        font-size: 0.65rem;
+
+        padding: 6px 8px;
+
+        border-radius: 8px;
+    }
+
+    .price-badge,
+    .state-badge {
+
+        font-size: 0.65rem;
+    }
+}

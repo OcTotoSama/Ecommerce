@@ -1,7 +1,9 @@
 const emptyCartHTML = `
     <div id="empty-cart">
         <div class="back-panier">
-            <h1 class="text-center box_blur_panier">Your cart is empty</h1>
+        <h1 class="cart-title empty">
+            Your cart is empty
+        </h1>
             <div class="d-flex justify-content-center align-items-center" style="min-height:40vh;">
                 <a href="${ACCUEIL_URL}" class="btn btn-dark px-4 py-3 fw-semibold">
                     So continue shopping here
@@ -13,21 +15,19 @@ const emptyCartHTML = `
 `;
 
 
-/* ➕ AJOUT */
 document.querySelectorAll('.ajout-panier').forEach(button => {
 
     button.addEventListener('click', function (e) {
-
-       
-
-        // ✅ connecté → AJAX
         e.preventDefault();
 
-        // const url = this.dataset.url;
-        const url = this.getAttribute('href');
+        const auth = this.dataset.auth;
 
-        const container = this.closest('.ajout_panier');
-        const quantiteElement = container ? container.querySelector('.in-panier') : null;
+        if (auth !== 'true') {
+            window.location.href = this.getAttribute('href');
+            return;
+        }
+
+        const url = this.dataset.url;
 
         fetch(url, {
             method: 'POST',
@@ -38,41 +38,45 @@ document.querySelectorAll('.ajout-panier').forEach(button => {
 
             if (data.success) {
 
-                if (quantiteElement) {
-                    quantiteElement.innerText = data.quantite;
+                // ✅ Mise à jour de la quantité sur la carte (page panier)
+                const container = this.closest('.ajout_panier');
+                if (container) {
+                    const quantiteElement = container.querySelector('.in-panier');
+                    if (quantiteElement) {
+                        quantiteElement.innerText = data.quantite;
+                    }
                 }
 
-                const subtotal = document.querySelector('#subtotal');
-                const tva = document.querySelector('#tva');
-                const total = document.querySelector('#total');
-
-                if (subtotal && tva && total) {
-                    subtotal.innerText = data.subtotal.toFixed(2) + ' €';
-                    tva.innerText = data.tva.toFixed(2) + ' €';
-                    total.innerText = data.total.toFixed(2) + ' €';
-                }
-
+                // ✅ Mise à jour compteur navbar
                 const cartCount = document.querySelector('#cart-count');
                 if (cartCount) {
                     cartCount.innerText = data.totalItems;
                 }
 
+                // ✅ Mise à jour résumé commande
+                const subtotal = document.querySelector('#subtotal');
+                const tva      = document.querySelector('#tva');
+                const total    = document.querySelector('#total');
+                if (subtotal && tva && total) {
+                    subtotal.innerText = data.subtotal.toFixed(2) + ' €';
+                    tva.innerText      = data.tva.toFixed(2)      + ' €';
+                    total.innerText    = data.total.toFixed(2)    + ' €';
+                }
+
+                // ✅ Feedback "Ajouté" uniquement si ce n'est pas le bouton "+"
                 const originalContent = this.innerHTML;
-
-                if (originalContent !== '+') {
-                    this.innerText = "Ajouté";
-
+                if (originalContent.trim() !== '+') {
+                    this.innerText = '✓ Ajouté';
                     setTimeout(() => {
                         this.innerHTML = originalContent;
                     }, 1000);
                 }
             }
-        });
+        })
+        .catch(err => console.error('Erreur fetch:', err));
     });
 
 });
-
-
 /* ➖ SUPPRESSION */
 document.querySelectorAll('.remove-panier').forEach(button => {
     button.addEventListener('click', function (e) {
@@ -166,17 +170,17 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('.favori-toggle').forEach(button => {
 
         button.addEventListener('click', function (e) {
-            
+
 
             const isAuthenticated = this.dataset.auth === 'true';
-        
+
             // ❌ Si PAS connecté → on laisse Symfony gérer (redirect login)
             if (!isAuthenticated) {
                 return;
             }
-        
+
             // ✅ Sinon AJAX
-                
+
             e.preventDefault();
 
             const url = this.dataset.url;

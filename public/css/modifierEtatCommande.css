@@ -1,0 +1,232 @@
+/* =========================
+   PAGE
+========================= */
+
+.order-edit-page {
+    min-height: 90vh;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 40px 20px;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.order-edit-container {
+    width: 100%;
+    max-width: 550px;
+
+    background: white;
+
+    border-radius: 24px;
+
+    padding: 40px;
+
+    box-shadow: 0 12px 35px rgba(0,0,0,0.12);
+}
+
+/* =========================
+   TITRE
+========================= */
+
+.order-edit-title {
+    font-size: 2.4rem;
+
+    font-weight: 800;
+
+    color: #212529;
+
+    text-align: center;
+
+    margin-bottom: 35px;
+
+    position: relative;
+}
+
+.order-edit-title::after {
+    content: "";
+
+    display: block;
+
+    width: 80px;
+    height: 4px;
+
+    background-color: #212529;
+
+    margin: 14px auto 0;
+
+    border-radius: 10px;
+}
+
+/* =========================
+   INFOS COMMANDE
+========================= */
+
+.order-info {
+    background: #f8f9fa;
+
+    border-radius: 16px;
+
+    padding: 20px;
+
+    margin-bottom: 30px;
+
+    border: 1px solid #ececec;
+}
+
+.order-info-item {
+    display: flex;
+
+    justify-content: space-between;
+
+    align-items: center;
+
+    margin-bottom: 12px;
+}
+
+.order-info-item:last-child {
+    margin-bottom: 0;
+}
+
+.label {
+    font-weight: 700;
+
+    color: #6c757d;
+}
+
+.value {
+    font-weight: 700;
+
+    color: #212529;
+}
+
+/* =========================
+   FORM
+========================= */
+
+.form-container label {
+    font-weight: 700;
+
+    margin-bottom: 10px;
+
+    color: #212529;
+
+    display: inline-block;
+
+    margin-right: 12px;
+}
+
+.form-container select,
+.form-container input {
+    border-radius: 14px !important;
+
+    border: 2px solid #dcdcdc !important;
+
+    padding: 12px 14px !important;
+
+    background-color: #f8f9fa !important;
+
+    transition: 0.25s ease;
+}
+
+.form-container select:focus,
+.form-container input:focus {
+    border-color: #8d8d8d !important;
+
+    box-shadow: 0 0 0 0.15rem rgba(0,0,0,0.08) !important;
+
+    background-color: white !important;
+}
+
+/* =========================
+   BOUTONS
+========================= */
+
+.button-group {
+    display: flex;
+
+    gap: 15px;
+
+    margin-top: 35px;
+
+    flex-wrap: wrap;
+}
+
+.save-btn {
+    flex: 1;
+
+    background-color: #212529;
+
+    color: white;
+
+    border: none;
+
+    padding: 14px 20px;
+
+    border-radius: 14px;
+
+    font-weight: 700;
+
+    transition: 0.25s ease;
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+}
+
+.save-btn:hover {
+    background-color: #8d8d8d;
+
+    transform: translateY(-2px);
+}
+
+.back-btn {
+    flex: 1;
+
+    background-color: #f1f3f5;
+
+    color: #212529;
+
+    text-decoration: none;
+
+    display: flex;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 14px 20px;
+
+    border-radius: 14px;
+
+    font-weight: 700;
+
+    transition: 0.25s ease;
+}
+
+.back-btn:hover {
+    background-color: #dee2e6;
+
+    color: #212529;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+    .order-edit-container {
+        padding: 30px 24px;
+    }
+
+    .order-edit-title {
+        font-size: 2rem;
+    }
+
+    .button-group {
+        flex-direction: column;
+    }
+}

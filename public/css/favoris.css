@@ -1,3 +1,58 @@
-main {
-    padding-top: 100px;
+
+/* =========================
+   TITRE FAVORIS
+========================= */
+
+.favoris-title {
+    font-size: 3rem;
+    font-weight: 800;
+
+    color: #212529;
+
+    text-align: center;
+
+    margin-top: 60px;
+    margin-bottom: 40px;
+
+    position: relative;
+
+    padding-top: 70px;
+}
+
+/* petite barre sous le titre */
+.favoris-title::after {
+    content: "";
+
+    display: block;
+
+    width: 90px;
+    height: 4px;
+
+    background-color: #212529;
+
+    margin: 14px auto 0;
+
+    border-radius: 10px;
+}
+
+/* =========================
+   CAS "VIDE"
+========================= */
+
+.favoris-title.empty {
+    color: #8d8d8d;
+}
+
+.favoris-title.empty::after {
+    background-color: #8d8d8d;
+}
+
+.empty-text {
+    text-align: center;
+
+    color: #777;
+
+    font-size: 1.1rem;
+
+    margin-top: -20px;
 }

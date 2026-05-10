@@ -1,0 +1,239 @@
+
+/* =========================
+   PAGE
+========================= */
+
+.recap-page {
+    padding: 60px 20px;
+}
+
+/* =========================
+   TITRE
+========================= */
+
+.recap-title {
+    font-size: 2.8rem;
+
+    font-weight: 800;
+
+    text-align: center;
+
+    margin-bottom: 40px;
+
+    color: #212529;
+
+    position: relative;
+    padding-top: 70px;
+}
+
+.recap-title::after {
+    content: "";
+
+    display: block;
+
+    width: 90px;
+    height: 4px;
+
+    background-color: #212529;
+
+    margin: 14px auto 0;
+
+    border-radius: 10px;
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.recap-container {
+    width: 92%;
+
+    margin: auto;
+}
+
+/* =========================
+   TABLE
+========================= */
+
+.recap-table-wrapper {
+    background: white;
+
+    border-radius: 20px;
+
+    overflow: hidden;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+
+    margin-bottom: 30px;
+}
+
+.recap-table thead {
+    background-color: #f5f5f5;
+}
+
+.recap-table thead th {
+    padding: 18px;
+
+    font-weight: 800;
+
+    color: #212529;
+
+    text-transform: uppercase;
+
+    font-size: 0.85rem;
+}
+
+.recap-table tbody td {
+    padding: 18px;
+
+    vertical-align: middle;
+
+    border-bottom: 1px solid #eee;
+}
+
+.recap-table tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+/* =========================
+   BADGES
+========================= */
+
+.price-tag {
+    background: #212529;
+
+    color: white;
+
+    padding: 6px 12px;
+
+    border-radius: 10px;
+
+    font-weight: 700;
+
+    display: inline-block;
+}
+
+.qty-badge {
+    background: #e9ecef;
+
+    padding: 6px 10px;
+
+    border-radius: 10px;
+
+    font-weight: 700;
+}
+
+/* =========================
+   SUMMARY
+========================= */
+
+.recap-summary {
+    background: white;
+
+    padding: 20px;
+
+    border-radius: 16px;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.06);
+
+    width: 320px;
+
+    margin-left: auto;
+}
+
+.summary-line {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-bottom: 10px;
+
+    color: #6c757d;
+}
+
+.summary-total {
+    display: flex;
+
+    justify-content: space-between;
+
+    font-size: 1.2rem;
+
+    font-weight: 800;
+
+    margin-top: 10px;
+
+    color: #212529;
+}
+
+/* =========================
+   ACTIONS
+========================= */
+
+.recap-actions {
+    display: flex;
+
+    justify-content: space-between;
+
+    margin-top: 30px;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+}
+
+.btn-back {
+    background: #e9ecef;
+
+    color: #212529;
+
+    padding: 12px 18px;
+
+    border-radius: 12px;
+
+    text-decoration: none;
+
+    font-weight: 700;
+
+    transition: 0.2s ease;
+}
+
+.btn-back:hover {
+    background: #dee2e6;
+}
+
+.btn-confirm {
+    background: #212529;
+
+    color: white;
+
+    padding: 12px 22px;
+
+    border-radius: 12px;
+
+    font-weight: 700;
+
+    border: none;
+
+    transition: 0.2s ease;
+}
+
+.btn-confirm:hover {
+    background: #000;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 900px) {
+
+    .recap-summary {
+        width: 100%;
+
+        margin-top: 20px;
+    }
+
+    .recap-actions {
+        flex-direction: column;
+    }
+}

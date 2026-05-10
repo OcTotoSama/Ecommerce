@@ -1,0 +1,87 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="https://bootswatch.com/5/sandstone/bootstrap.min.css">
+	<link rel="stylesheet" href="{{ asset('css/base.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/modifierUser.css') }}">
+{% endblock %}
+
+{% block title %}
+	{{ parent() }}Modifier l'utilisateur
+{% endblock %}
+
+{% block body %}
+
+	<div class="edit-user-page">
+
+		<h1 class="edit-user-title">
+			Modifier l'utilisateur
+		</h1>
+
+		<div class="edit-user-container">
+
+			{{ form_start(form) }}
+
+			<div class="form-group-custom">
+				<label class="fw-bold">Date d'inscription</label>
+
+				<p class="form-control-plaintext">
+					{{ form.vars.data.dateInscription ? form.vars.data.dateInscription|date('d/m/Y à H:i:s') : '—' }}
+				</p>
+			</div>
+
+			<div class="form-group-custom">
+				{{ form_label(form.email) }}
+				{{ form_widget(form.email) }}
+			</div>
+
+			<div class="form-group-custom">
+				{{ form_label(form.name) }}
+				{{ form_widget(form.name) }}
+			</div>
+
+			<div class="form-group-custom">
+				{{ form_label(form.surname) }}
+				{{ form_widget(form.surname) }}
+			</div>
+
+
+			{# ===== ADRESSE ===== #}
+			<div class="form-group-custom">
+				{{ form_label(form.address) }}
+				{{ form_widget(form.address) }}
+			</div>
+
+			<div class="form-group-custom">
+				{{ form_label(form.postalCode) }}
+				{{ form_widget(form.postalCode) }}
+			</div>
+
+			<div class="form-group-custom">
+				{{ form_label(form.city) }}
+				{{ form_widget(form.city) }}
+			</div>
+
+			<div class="form-group-custom">
+				{{ form_label(form.country) }}
+				{{ form_widget(form.country) }}
+			</div>
+			
+
+			<div class="submit-container">
+				{{ form_widget(form.modifier) }}
+			</div>
+
+			{{ form_end(form) }}
+
+			<div class="back-button-container">
+				<a class="back-btn" href="{{ path('app_liste_utilisateur') }}">
+					Retour à la liste des utilisateurs
+				</a>
+			</div>
+
+		</div>
+
+	</div>
+
+{% endblock %}

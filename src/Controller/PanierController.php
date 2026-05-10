@@ -14,50 +14,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class PanierController extends AbstractController
 {
-    /* #[Route('/private-panier/{id}', name: 'app_panier')]
-    public function index(Request $request, Produit $produit, EntityManagerInterface $em): Response
-    {
-    $referer = $request -> headers -> get('referer'); // récupère la page d'ou tu viens
-
-    $u = $this->getUser(); // récupère le user qui est connecté
-    $panier = $u->getPanier(); // récupère le panier du user
-    if (!$panier){
-    $panier=new Panier();
-    $u->setPanier($panier);
-    }
-
-    $trouver=false;
-    $ajouterTrouver=null;
-    $total=$panier->getAjouters()->count();
-    $i=0;
-    if($total){
-    do {
-    $ajouter= $panier->getAjouters()->get($i) ;
-    if($ajouter->getProduit()==$produit){
-    $trouver=true;
-    $ajouterTrouver=$ajouter;
-    }
-    $i++;
-    }while( !$trouver && $i<$total );
-    }
-
-    if ($trouver){
-    $ajouter=$ajouterTrouver;
-    $ajouter->setQuantite(($ajouter->getQuantite())+1);
-
-    }else{
-    $ajouter = new Ajouter();
-    $ajouter->setQuantite(1);
-    $ajouter->setProduit($produit);
-    $ajouter->setPanier($panier);
-    }
-    $em->persist($u);
-    $em->persist($panier);
-    $em->persist($ajouter);
-    $em->flush();
-
-    return $this->redirect($referer ?? $this -> generateUrl('app_accueil')); // te renvois sur la page d'ou tu viens
-    }*/
+ 
 /*------------------------------------------------------------------------------------------------------------------*/
 
     #[Route('/private-panier/{id}', name: 'app_panier', methods: ['GET', 'POST'])]
@@ -148,48 +105,7 @@ final class PanierController extends AbstractController
     }
 /*--------------------------------------------------------------------------------*/
 
-/*
-#[Route('/private-panier-supprime/{id}', name: 'app_panier_supprime')]
-public function supprimerarticle(Request $request, Produit $produit, EntityManagerInterface $em): Response
-{
-$referer = $request -> headers -> get('referer'); // récupère la page d'ou tu viens
 
-$u = $this->getUser(); // récupère le user qui est connecté
-$panier = $u->getPanier(); // récupère le panier du user
-if (!$panier){
-$panier=new Panier();
-$u->setPanier($panier);
-}
-
-$trouver=false;
-$ajouterTrouver=null;
-$total=$panier->getAjouters()->count();
-$i=0;
-if($total){
-do {
-$ajouter= $panier->getAjouters()->get($i) ;
-if($ajouter->getProduit()==$produit){
-$trouver=true;
-$ajouterTrouver=$ajouter;
-}
-$i++;
-}while( !$trouver && $i<$total );
-}
-if ($trouver){
-if (($ajouter->getQuantite())>1){
-$ajouter=$ajouterTrouver;
-$ajouter->setQuantite(($ajouter->getQuantite())-1);
-/*  $em->persist($u);
-$em->persist($panier);*//*
-    $em->persist($ajouter);
-    $em->flush();
-    }else{
-    $em->remove($ajouter);
-    $em->flush();
-    }
-    }
-    return $this->redirect($referer ?? $this -> generateUrl('app_accueil')); // te renvois sur la page d'ou tu viens
-    }*/
 
     #[Route('/private-panier-supprime/{id}', name: 'app_panier_supprime', methods: ['GET', 'POST'])]
     public function supprimerarticle(Request $request, Produit $produit, EntityManagerInterface $em): Response
@@ -275,41 +191,6 @@ $em->persist($panier);*//*
         return $this->redirect($referer ?? $this->generateUrl('app_accueil'));
     }
 
-    /* #[Route('/private-panier-annihiler/{id}', name: 'app_panier_annihiler')]
-    public function annihiler(Request $request, Produit $produit, EntityManagerInterface $em): Response
-    {
-    $referer = $request -> headers -> get('referer'); // récupère la page d'ou tu viens
-
-    $u = $this->getUser(); // récupère le user qui est connecté
-    $panier = $u->getPanier(); // récupère le panier du user
-    if (!$panier){
-    $panier=new Panier();
-    $u->setPanier($panier);
-    }
-
-    $trouver=false;
-    $ajouterTrouver=null;
-    $total=$panier->getAjouters()->count();
-    $i=0;
-    if($total){
-    do {
-    $ajouter= $panier->getAjouters()->get($i) ;
-    if($ajouter->getProduit()==$produit){
-    $trouver=true;
-    $ajouterTrouver=$ajouter;
-    }
-    $i++;
-    }while( !$trouver && $i<$total );
-    }
-
-    if ($trouver){
-
-    $em->remove($ajouter);
-    $em->flush();
-
-    }
-    return $this->redirect($referer ?? $this -> generateUrl('app_accueil')); // te renvois sur la page d'ou tu viens
-    }*/
 
 /*----------------------------------------------------------------------------------------------------------*/
     #[Route('/private-panier-annihiler/{id}', name: 'app_panier_annihiler', methods: ['GET', 'POST'])]

@@ -15,14 +15,6 @@ use Symfony\Component\HttpFoundation\Request;
 
 final class AdminController extends AbstractController
 {
-  /*  #[Route('/admin-ajout', name: 'app_admin_ajout')]
-    public function index(): Response
-    {
-        return $this->render('admin/ajout_produit.html.twig', [
-            
-        ]);
-    }*/
-
 
     #[Route('/admin-ajout', name: 'app_admin_ajout')]
     public function AjoutProduit(Request $request, EntityManagerInterface $em): Response
@@ -41,7 +33,9 @@ final class AdminController extends AbstractController
         }
         return $this->render('admin/ajout_produit.html.twig', [
             'form' => $form->createView()
-        ]);
+        ])
+        
+        ;
     }
 
 }

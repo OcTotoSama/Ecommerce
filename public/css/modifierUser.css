@@ -1,0 +1,211 @@
+
+/* =========================
+   PAGE
+========================= */
+
+.edit-user-page {
+    width: 100%;
+
+    padding: 40px 20px 80px;
+}
+
+/* =========================
+   TITRE
+========================= */
+
+.edit-user-title {
+    font-size: 3rem;
+    font-weight: 800;
+
+    color: #212529;
+
+    text-align: center;
+
+    margin-bottom: 50px;
+
+    position: relative;
+    padding-top: 70px;
+}
+
+/* Barre décorative */
+.edit-user-title::after {
+    content: "";
+
+    display: block;
+
+    width: 90px;
+    height: 4px;
+
+    background-color: #212529;
+
+    margin: 14px auto 0;
+
+    border-radius: 10px;
+}
+
+/* =========================
+   CONTAINER FORMULAIRE
+========================= */
+
+.edit-user-container {
+    width: 40%;
+
+    margin: auto;
+
+    background-color: white;
+
+    padding: 40px;
+
+    border-radius: 22px;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+}
+
+/* =========================
+   GROUPES INPUTS
+========================= */
+
+.form-group-custom {
+    margin-bottom: 28px;
+}
+
+/* LABELS */
+.form-group-custom label {
+    display: block;
+
+    margin-bottom: 10px;
+
+    font-weight: 700;
+
+    color: #212529;
+
+    letter-spacing: 0.5px;
+}
+
+/* INPUTS */
+.form-control {
+    border-radius: 14px !important;
+
+    border: 2px solid #dcdcdc !important;
+
+    padding: 14px 16px !important;
+
+    font-size: 1rem !important;
+
+    transition: 0.25s ease;
+
+    background-color: #f8f9fa !important;
+}
+
+/* Hover */
+.form-control:hover {
+    background-color: #f1f3f5 !important;
+}
+
+/* Focus */
+.form-control:focus {
+    border-color: #8f8f8f !important;
+
+    box-shadow: 0 0 0 0.15rem rgba(0,0,0,0.08) !important;
+
+    background-color: white !important;
+}
+
+/* =========================
+   BOUTON
+========================= */
+
+.submit-container {
+    text-align: center;
+
+    margin-top: 40px;
+}
+
+/* bouton Symfony */
+.btn.bg-primary {
+    background-color: #212529 !important;
+
+    border: none !important;
+
+    padding: 14px 30px !important;
+
+    border-radius: 14px !important;
+
+    font-weight: 700 !important;
+
+    font-size: 1rem !important;
+
+    transition: 0.25s ease;
+
+    box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+}
+
+/* Hover */
+.btn.bg-primary:hover {
+    background-color: #8d8d8d !important;
+
+    transform: translateY(-2px);
+}
+
+/* =========================
+   BACK BUTTON
+========================= */
+
+.back-button-container {
+    text-align: center;
+
+    margin-top: 25px;
+}
+
+.back-btn {
+    display: inline-block;
+
+    color: #212529;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    transition: 0.2s ease;
+}
+
+.back-btn:hover {
+    color: #8d8d8d;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 1200px) {
+
+    .edit-user-container {
+        width: 55%;
+    }
+}
+
+@media (max-width: 992px) {
+
+    .edit-user-container {
+        width: 75%;
+    }
+
+    .edit-user-title {
+        font-size: 2.5rem;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .edit-user-container {
+        width: 100%;
+
+        padding: 25px;
+
+        border-radius: 0;
+    }
+
+    .edit-user-title {
+        font-size: 2rem;
+    }
+}

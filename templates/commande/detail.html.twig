@@ -1,0 +1,219 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+	<link rel="stylesheet" href="https://bootswatch.com/5/sandstone/bootstrap.min.css">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+
+	<link rel="stylesheet" href="{{ asset('css/base.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/mes-commandes-detail.css') }}">
+	<link rel="stylesheet" href="{{ asset('css/evaluation.css') }}">
+
+
+{% endblock %}
+
+{% block title %}
+	Commande #{{ commande.id }}
+{% endblock %}
+
+{% block body %}
+
+<div class="commande-detail-page">
+
+	<div class="commande-detail-container">
+
+		<div class="detail-header">
+
+			<a href="{{path("app_mes_commandes")}}"
+			   class="back-btn">
+				<i class="bi bi-arrow-left"></i>
+				Retour
+			</a>
+
+			<h1 class="detail-title">
+				Commande #{{ commande.id }}
+			</h1>
+
+			<p class="detail-date">
+				{{ commande.dateCommande|date('d/m/Y à H:i') }}
+			</p>
+
+		</div>
+
+		<div class="chat-section">
+
+			<h2 class="section-title">
+				<i class="bi bi-chat-dots"></i>
+				Tchat avec le support
+			</h2>
+
+			<div class="chat-box" id="chat-box">
+
+				{% for message in commande.messages %}
+
+					<div class="d-flex mb-3 {{ message.admin ? 'justify-content-start' : 'justify-content-end' }}">
+
+						<div class="message-bubble {{ message.admin ? 'support-message' : 'user-message' }}">
+
+							<div class="message-author">
+								{{ message.admin ? 'Support' : 'Vous' }}
+							</div>
+
+							<div class="message-content">
+								{{ message.contenu }}
+							</div>
+
+							<div class="message-date">
+								{{ message.dateEnvoi|date('d/m H:i') }}
+							</div>
+
+						</div>
+
+					</div>
+
+				{% else %}
+
+					<div class="empty-chat">
+						Aucun message pour le moment.
+					</div>
+
+				{% endfor %}
+
+			</div>
+
+			<form method="post"
+			      id="chat-form"
+			      class="chat-form">
+
+				<input
+					type="text"
+					name="contenu"
+					id="chat-input"
+					class="chat-input"
+					placeholder="Écrire un message..."
+					autocomplete="off"
+					required
+				>
+
+				<button type="submit" class="send-btn">
+					<i class="bi bi-send-fill"></i>
+				</button>
+
+			</form>
+
+		</div>
+
+		<div class="order-section">
+
+			<h2 class="section-title">
+				<i class="bi bi-bag"></i>
+				Détail de la commande
+			</h2>
+
+			<div class="table-responsive">
+
+				<table class="table order-table">
+
+					<thead>
+
+						<tr>
+							<th>Produit</th>
+							<th>Qté</th>
+							<th>Prix unit.</th>
+							<th>Sous-total</th>
+							<th>Note</th>
+						</tr>
+
+					</thead>
+
+					<tbody>
+
+						{% for ligne in commande.ligneCommandes %}
+
+							{% set evalExistante = null %}
+
+							{% for eval in ligne.produit.evaluations %}
+								{% if eval.user == app.user %}
+									{% set evalExistante = eval %}
+								{% endif %}
+							{% endfor %}
+
+							<tr>
+
+								<td>{{ ligne.produit.designation }}</td>
+
+								<td>{{ ligne.quantite }}</td>
+
+								<td>
+									{{ ligne.prixUnitaire|number_format(2, '.', '') }}
+									€
+								</td>
+
+								<td class="fw-bold">
+									{{ (ligne.prixUnitaire * ligne.quantite)|number_format(2, '.', '') }}
+									€
+								</td>
+
+								<td>
+
+									<div class="etoiles"
+									     data-produit-id="{{ ligne.produit.id }}"
+									     data-url="{{ path('app_evaluer', {'id': ligne.produit.id}) }}">
+
+										{% for i in 1..5 %}
+
+											<span class="etoile {{ evalExistante and evalExistante.note >= i ? 'active' : '' }}"
+											      data-note="{{ i }}">★</span>
+
+										{% endfor %}
+
+									</div>
+
+									<small class="text-muted note-label-{{ ligne.produit.id }}">
+
+										{% if evalExistante %}
+											Votre note : {{ evalExistante.note }}/5
+										{% else %}
+											Non noté
+										{% endif %}
+
+									</small>
+
+								</td>
+
+							</tr>
+
+						{% endfor %}
+
+					</tbody>
+
+				</table>
+
+			</div>
+
+			<div class="order-total">
+
+				<span>Total TTC</span>
+
+				<strong>
+					{{ (commande.total * 1.2)|number_format(2, '.', '') }}
+					€
+				</strong>
+
+			</div>
+
+		</div>
+
+	</div>
+
+</div>
+
+{% endblock %}
+
+{% block javascripts %}
+	{{ parent() }}
+
+	<script src="{{ asset('JS/chat-client.js') }}"></script>
+
+	<script src="{{ asset('JS/evaluation.js') }}"></script>
+
+{% endblock %}

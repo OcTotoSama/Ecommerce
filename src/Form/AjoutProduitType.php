@@ -24,7 +24,17 @@ class AjoutProduitType extends AbstractType
         $builder
             ->add('designation', TextType::class, ['attr' => ['class'=> 'form-control'], 'label_attr' => ['class'=> 'fw-bold']])
             ->add('image', TextType::class, ['attr' => ['class'=> 'form-control'], 'label_attr' => ['class'=> 'fw-bold']])
-            ->add('prix', MoneyType::class, ['attr' => ['class'=> 'form-control'], 'label_attr' => ['class'=> 'fw-bold']])
+          /*  ->add('prix', MoneyType::class, ['attr' => ['class'=> 'form-control'], 'label_attr' => ['class'=> 'fw-bold']])*/
+
+            ->add('prix', MoneyType::class, [
+                'label' => 'Prix €',
+                'currency' => false,
+                'attr' => [
+                    'class' => 'form-control'
+                ]
+            ])
+
+
             ->add('name', TextType::class, ['attr' => ['class'=> 'form-control'], 'label_attr' => ['class'=> 'fw-bold']])
            /* ->add('users', EntityType::class, [
                 'class' => User::class,
