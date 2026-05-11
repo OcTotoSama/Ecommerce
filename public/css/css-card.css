@@ -8,7 +8,7 @@ html{
 
 /* CONTAINER GLOBAL */
 .wrap{
-    background-color: bisque;
+    background: linear-gradient(180deg, #f3ece2 0%, #ede2d3 100%);
     border: 1px solid #eef0f3;
     display: flex;
     flex-wrap: wrap;

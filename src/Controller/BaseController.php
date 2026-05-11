@@ -20,6 +20,16 @@ final class BaseController extends AbstractController
             'produits' => $produits,
         ]);
     }
+
+    #[Route('/tous-les-produits', name: 'app_liste_tous_produit')]
+    public function liste_produit_achat(ProduitRepository $repository): Response
+    {
+        $produits = $repository->findAll();
+
+        return $this->render('base/tous-les-produits.html.twig', [
+            'produits' => $produits,
+        ]);
+    }
     
     #[Route('/redirect-access-denied', name: 'access_denied_redirect')]
     public function accessDenied(): Response

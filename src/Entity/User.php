@@ -38,7 +38,7 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column]
     private ?\DateTimeImmutable $dateInscription = null;
 
-    #[ORM\Column(length: 50)]
+    #[ORM\Column(length : 50)]
     private ?string $name = null;
 
     #[ORM\Column(length: 50)]
@@ -76,12 +76,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $this->evaluations = new ArrayCollection();
     }
 
-    public function getId(): ?int { return $this->id; }
+    public function getId(): ?int
+    {return $this->id;}
 
-    public function getEmail(): ?string { return $this->email; }
-    public function setEmail(string $email): static { $this->email = $email; return $this; }
+    public function getEmail(): ?string
+    {return $this->email;}
+    public function setEmail(string $email): static
+    { $this->email = $email;return $this;}
 
-    public function getUserIdentifier(): string { return (string) $this->email; }
+    public function getUserIdentifier(): string
+    {return (string) $this->email;}
 
     public function getRoles(): array
     {
@@ -96,7 +100,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getPassword(): ?string { return $this->password; }
+    public function getPassword(): ?string
+    {return $this->password;}
 
     public function setPassword(string $password): static
     {
@@ -104,9 +109,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function eraseCredentials(): void {}
+    public function eraseCredentials(): void
+    {}
 
-    public function getProduits(): Collection { return $this->produits; }
+    public function getProduits(): Collection
+    {return $this->produits;}
 
     public function addProduit(Produit $produit): static
     {
@@ -122,7 +129,8 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getPanier(): ?Panier { return $this->panier; }
+    public function getPanier(): ?Panier
+    {return $this->panier;}
 
     public function setPanier(?Panier $panier): static
     {
@@ -141,23 +149,45 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    public function getName(): ?string { return $this->name; }
-    public function setName(string $name): static { $this->name = $name; return $this; }
+    public function getName(): ?string
+    {return $this->name;}
+    public function setName(string $name): static
+    { $this->name = $name;return $this;}
 
-    public function getSurname(): ?string { return $this->surname; }
-    public function setSurname(string $surname): static { $this->surname = $surname; return $this; }
+    public function getSurname(): ?string
+    {return $this->surname;}
+    public function setSurname(string $surname): static
+    { $this->surname = $surname;return $this;}
 
-    public function getAddress(): ?string { return $this->address; }
-    public function setAddress(string $address): static { $this->address = $address; return $this; }
+    public function getCommandes(): Collection
+    {
+        return $this->commandes;
+    }
 
-    public function getPostalCode(): ?string { return $this->postalCode; }
-    public function setPostalCode(string $postalCode): static { $this->postalCode = $postalCode; return $this; }
+    public function getEvaluations(): Collection
+    {
+        return $this->evaluations;
+    }
 
-    public function getCity(): ?string { return $this->city; }
-    public function setCity(string $city): static { $this->city = $city; return $this; }
+    public function getAddress(): ?string
+    {return $this->address;}
+    public function setAddress(string $address): static
+    { $this->address = $address;return $this;}
 
-    public function getCountry(): ?string { return $this->country; }
-    public function setCountry(string $country): static { $this->country = $country; return $this; }
+    public function getPostalCode(): ?string
+    {return $this->postalCode;}
+    public function setPostalCode(string $postalCode): static
+    { $this->postalCode = $postalCode;return $this;}
+
+    public function getCity(): ?string
+    {return $this->city;}
+    public function setCity(string $city): static
+    { $this->city = $city;return $this;}
+
+    public function getCountry(): ?string
+    {return $this->country;}
+    public function setCountry(string $country): static
+    { $this->country = $country;return $this;}
 
     public function isActive(): bool
     {

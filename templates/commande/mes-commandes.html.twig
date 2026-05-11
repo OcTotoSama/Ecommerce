@@ -13,51 +13,31 @@
 {% endblock %}
 
 {% block body %}
-
 	<div class="mes-commandes-page">
-
 		<div class="mes-commandes-header">
-
 			<h1 class="mes-commandes-title">
 				Mes commandes
 			</h1>
-
 			<p class="mes-commandes-subtitle">
 				Retrouvez l’historique de toutes vos commandes et discutez avec l’administration.
 			</p>
-
 		</div>
-
 		{% if commandes is empty %}
-
 			<div class="empty-orders">
-
 				<div class="empty-orders-icon">
 					<i class="bi bi-bag-x"></i>
 				</div>
-
 				<h2>Aucune commande</h2>
-
-				<p>
-					Vous n'avez pas encore passé de commande.
-				</p>
-
+				<p>Vous n'avez pas encore passé de commande.</p>
 				<a href="{{ path('app_accueil') }}" class="shop-btn">
 					Continuer mes achats
 				</a>
-
 			</div>
-
 		{% else %}
-
 			<div class="mes-commandes-container">
-
 				<div class="table-responsive">
-
 					<table class="table mes-commandes-table">
-
 						<thead>
-
 							<tr>
 								<th>N°</th>
 								<th>Date</th>
@@ -66,95 +46,43 @@
 								<th>Messages</th>
 								<th>Action</th>
 							</tr>
-
 						</thead>
-
 						<tbody>
-
 							{% for commande in commandes %}
-
-								{% set badges = {
-								'en_preparation':     'warning',
-								'en_cours_livraison': 'info',
-								'livre':              'success'
-							} %}
-
+								{% set badges = {'en_preparation':'warning','en_cours_livraison':'info','livre':'success'} %}
 								<tr>
-
 									<td>
-										<span class="order-id">
-											#{{ commande.id }}
-										</span>
+										<span class="order-id">#{{ loop.revindex }}</span>
 									</td>
-
-									<td class="date-cell">
-										{{ commande.dateCommande|date('d/m/Y') }}
-									</td>
-
+									<td class="date-cell">{{ commande.dateCommande|date('d/m/Y') }}</td>
 									<td>
-										<span class="price-badge">
-											{{ (commande.total * 1.2)|number_format(2, '.', '') }}
-											€
-										</span>
+										<span class="price-badge">{{ (commande.total * 1.2)|number_format(2, '.', '') }}€</span>
 									</td>
-
 									<td>
-
 										<span class="badge bg-{{ badges[commande.etat] ?? 'secondary' }} state-badge">
-
-											{{ commande.etat|replace({
-											'en_preparation': 'En préparation',
-											'en_cours_livraison': 'En cours de livraison',
-											'livre': 'Livré'
-										}) }}
-
+											{{ commande.etat|replace({'en_preparation': 'En préparation','en_cours_livraison': 'En cours de livraison','livre': 'Livré'}) }}
 										</span>
-
 									</td>
-
 									<td>
-
 										{% set nonLus = commande.messages|filter(m => m.admin and not m.lu)|length %}
-
 										{% if nonLus > 0 %}
-
-											<span class="message-badge">
-												{{ nonLus }}
-											</span>
-
+											<span class="message-badge">{{ nonLus }}</span>
 										{% else %}
-
-											<span class="no-message">
-												—
-											</span>
-
+											<span class="no-message">—</span>
 										{% endif %}
-
 									</td>
-
 									<td>
-
 										<a href="{{ path('app_mes_commandes_detail', {'id': commande.id}) }}" class="detail-btn">
 											<i class="bi bi-chat-dots"></i>
 											Voir détail & tchat
 										</a>
-
 									</td>
-
 								</tr>
-
 							{% endfor %}
-
 						</tbody>
-
 					</table>
-
 				</div>
-
 			</div>
-
 		{% endif %}
-
 	</div>
-
 {% endblock %}

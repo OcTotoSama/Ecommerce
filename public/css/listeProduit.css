@@ -444,3 +444,32 @@
 
     pointer-events: none;
 }
+
+
+
+/* =========================
+   COUNT PRODUIT BADGE
+========================= */
+
+.product-count {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    width: fit-content;
+
+    padding: 4px 10px;
+
+    border-radius: 999px;
+
+    background: #e8dccb;
+
+    color: #2c2a26;
+
+    font-weight: 700;
+
+    font-size: 0.85rem;
+
+    border: 1px solid #d8c6ad;
+}

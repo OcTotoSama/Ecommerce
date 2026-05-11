@@ -6,15 +6,7 @@ use App\Repository\EvaluationRepository;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: EvaluationRepository::class)]
-#[ORM\Table(
-    name: 'evaluation',
-    uniqueConstraints: [
-        new ORM\UniqueConstraint(
-            name: 'unique_user_produit',
-            columns: ['user_id', 'produit_id']
-        )
-    ]
-)]
+#[ORM\UniqueConstraint(name: 'unique_user_produit', columns: ['user_id', 'produit_id'])]
 class Evaluation
 {
     #[ORM\Id]
@@ -33,44 +25,11 @@ class Evaluation
     #[ORM\Column(type: 'smallint')]
     private int $note;
 
-    public function getId(): ?int
-    {
-        return $this->id;
-    }
-
-    public function getUser(): ?User
-    {
-        return $this->user;
-    }
-
-    public function setUser(?User $user): static
-    {
-        $this->user = $user;
-
-        return $this;
-    }
-
-    public function getProduit(): ?Produit
-    {
-        return $this->produit;
-    }
-
-    public function setProduit(?Produit $produit): static
-    {
-        $this->produit = $produit;
-
-        return $this;
-    }
-
-    public function getNote(): int
-    {
-        return $this->note;
-    }
-
-    public function setNote(int $note): static
-    {
-        $this->note = max(1, min(5, $note));
-
-        return $this;
-    }
+    public function getId(): ?int { return $this->id; }
+    public function getUser(): ?User { return $this->user; }
+    public function setUser(?User $u): static { $this->user = $u; return $this; }
+    public function getProduit(): ?Produit { return $this->produit; }
+    public function setProduit(?Produit $p): static { $this->produit = $p; return $this; }
+    public function getNote(): int { return $this->note; }
+    public function setNote(int $n): static { $this->note = max(1, min(5, $n)); return $this; }
 }

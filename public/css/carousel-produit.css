@@ -1,0 +1,208 @@
+/* =========================
+   SECTION CAROUSEL
+========================= */
+
+.carousel-section {
+    background: linear-gradient(180deg, #f3ece2 0%, #ede2d3 100%);
+    border: 1px solid #e2d6c5;
+    border-radius: 28px;
+    padding: 40px 30px;
+    margin-top: 40px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+}
+
+/* =========================
+   TITRE
+========================= */
+
+.carousel-title {
+    font-size: 2.6rem;
+    font-weight: 800;
+    color: #2c2a26;
+    letter-spacing: 1px;
+    text-align: center;
+    position: relative;
+    margin-bottom: 50px !important;
+}
+
+.carousel-title::after {
+    content: "";
+    display: block;
+    width: 90px;
+    height: 4px;
+    background: #8a7b6a;
+    margin: 14px auto 0 auto;
+    border-radius: 999px;
+}
+
+/* =========================
+   CAROUSEL INNER
+========================= */
+
+.carousel-inner {
+    padding: 10px 5px;
+}
+
+.carousel-item {
+    padding: 10px 0;
+}
+
+/* =========================
+   GRID CARDS
+   Le JS écrira grid-template-columns en px pour chaque slide.
+========================= */
+
+.carousel-grid {
+    display: grid;
+    gap: 20px;
+    justify-items: center;
+    justify-content: center;
+    align-items: start;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* =========================
+   CARD WRAPPER (TAILLES FIXES conservées)
+   IMPORTANT : ne pas mettre width:100% ici, garder la largeur fixe.
+========================= */
+
+.carousel-card-wrapper {
+    width: 220px; /* garde ton design */
+    display: flex;
+    justify-content: center;
+    box-sizing: border-box;
+}
+
+/* Assure que l'image à l'intérieur ne force pas la carte à rétrécir */
+.carousel-card-wrapper img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* =========================
+   CONTROLS
+========================= */
+
+.custom-carousel {
+    position: relative;
+}
+
+.carousel-control-prev,
+.carousel-control-next {
+    width: 55px;
+    height: 55px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 30;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: transparent;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+}
+
+.carousel-control-prev { left: 12px; right: auto; }
+.carousel-control-next { right: 12px; left: auto; }
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    background-color: rgba(44, 42, 38, 0.88);
+    border-radius: 50%;
+    width: 42px;
+    height: 42px;
+    background-size: 45%;
+    transition: 0.2s ease;
+    display: inline-block;
+}
+
+.carousel-control-prev:hover .carousel-control-prev-icon,
+.carousel-control-next:hover .carousel-control-next-icon {
+    background-color: #1f1d1a;
+    transform: scale(1.08);
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+}
+
+/* =========================
+   RESPONSIVE (conserve les largeurs fixes)
+========================= */
+
+@media (max-width: 1200px) {
+    .carousel-title { font-size: 2.2rem; }
+   /* .carousel-card-wrapper { width: 200px; }*/
+    .carousel-grid { gap: 20px; }
+}
+
+@media (max-width: 992px) {
+    .carousel-section { padding: 30px 20px; }
+    .carousel-title { font-size: 2rem; }
+  /*  .carousel-card-wrapper { width: 180px; }*/
+}
+
+@media (max-width: 768px) {
+    .carousel-section { border-radius: 18px; padding: 25px 15px; }
+    .carousel-title { font-size: 1.7rem; }
+
+    .carousel-control-prev,
+    .carousel-control-next {
+        width: 44px;
+        height: 44px;
+        top: 50%;
+        transform: translateY(-50%);
+    }
+
+    .carousel-control-prev { left: 8px; right: auto; }
+    .carousel-control-next { right: 8px; left: auto; }
+
+    .carousel-control-prev-icon,
+    .carousel-control-next-icon {
+        width: 36px;
+        height: 36px;
+        background-size: 40%;
+    }
+
+    /*.carousel-card-wrapper { width: 160px; }*/
+    .carousel-grid { gap: 12px; }
+}
+
+/* =========================
+   GRID DEFAULTS (fallbacks si JS absent)
+========================= */
+
+.carousel-grid { grid-template-columns: repeat(4, 1fr); }
+
+@media (max-width: 1200px) {
+    .carousel-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media (max-width: 900px) {
+    .carousel-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 600px) {
+    .carousel-grid { grid-template-columns: repeat(1, 1fr); }
+}
+
+/* =========================
+   UTILITAIRES
+========================= */
+
+.visually-hidden {
+    position: absolute !important;
+    width: 1px !important;
+    height: 1px !important;
+    padding: 0 !important;
+    margin: -1px !important;
+    overflow: hidden !important;
+    clip: rect(0, 0, 0, 0) !important;
+    white-space: nowrap !important;
+    border: 0 !important;
+}

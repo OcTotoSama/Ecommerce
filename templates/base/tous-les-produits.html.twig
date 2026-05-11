@@ -1,0 +1,76 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}NovaSprite
+{% endblock %}
+
+{% block body %}
+
+	<div class="acceuil_pres">
+
+		<div class="box_blur_acceuil">
+			<h1 class="text-center display-1 fw-bold">NovaSprite</h1>
+
+			<p class="text-center fw-bold">La référence en sprite et asset</p>
+
+			{{render(controller('App\\Controller\\BaseController::recherche'))}}
+			
+		</div>
+	</div>
+
+	<div class="wrap">
+		{% for produit in produits|sort((a, b) => a.name <=> b.name) %}
+			<div class="card_anime" data-id="returner">
+
+				<a href="{% if is_granted('IS_AUTHENTICATED_FULLY') %}javascript:void(0); {% else %}{{ path('app_login') }}{% endif %}" class="favori-toggle" data-id="{{ produit.id }}" data-url="{{ path('app_favori', {'id': produit.id}) }}" data-auth="{{ is_granted('IS_AUTHENTICATED_FULLY') ? 'true' : 'false' }}">
+
+					{% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+						<i class="bi bi-heart favori"></i>
+					{% else %}
+						{% if produit in app.user.produits %}
+							<i class="bi bi-heart-fill favori"></i>
+						{% else %}
+							<i class="bi bi-heart favori"></i>
+						{% endif %}
+					{% endif %}
+				</a>
+
+				{% set image = 'images/img_produit/'~ produit.image %}
+				<div class="div_card_img">
+					<img class="card-img-top" src="{{asset(image)}}" alt="Image de {{produit.name}} ">
+				</div>
+				<div class="card_content">
+					<p class="name">{{produit.name}}</p>
+					<p class="explain">{{produit.designation}}</p>
+					<p class="price">{{ produit.prix|number_format(2, '.', '') }}€</p>
+
+					<p class="moyenne-{{ produit.id }}">
+						{% set moy = produit.moyenneNotes %}
+
+						{% if moy %}
+							★
+							{{ moy }}/5
+							<small class="text-muted">
+								({{ produit.evaluations|length }}
+								avis)
+							</small>
+						{% else %}
+							<small class="text-muted">
+								Aucun avis
+							</small>
+						{% endif %}
+					</p>
+				</div>
+
+				<a href="{% if is_granted('IS_AUTHENTICATED_FULLY') %}javascript:void(0); {% else %}{{ path('app_login') }}{% endif %}" class="ajout-panier ajout_panier" data-id="{{ produit.id }}" data-url="{{ path('app_panier', {'id': produit.id}) }}" data-auth="{{ is_granted('IS_AUTHENTICATED_FULLY') ? 'true' : 'false' }}">
+
+					<i class="bi bi-bag"></i>
+					Add to Cart
+				</a>
+
+
+			</div>
+		{% endfor %}
+	</div>
+	
+
+{% endblock %}

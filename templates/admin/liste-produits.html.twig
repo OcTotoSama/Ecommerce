@@ -11,12 +11,20 @@
 
 {% block body %}
 
-
 	<div class="product-header">
 
-		<h1 class="product-title">
-			Liste des produits
-		</h1>
+		<div class="product-header-left">
+
+			<h1 class="product-title">
+				Liste des produits
+			</h1>
+
+			<span class="product-count">
+				{{ returns|length }}
+				produits
+			</span>
+
+		</div>
 
 		<a class="add-product-btn" href="{{ path('app_admin_ajout') }}">
 			<i class="bi bi-plus-circle-fill"></i>

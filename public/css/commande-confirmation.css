@@ -1,10 +1,11 @@
-
 /* =========================
    PAGE
 ========================= */
 
 .confirmation-page {
-    padding: 60px 20px;
+    padding: 70px 20px 60px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 /* =========================
@@ -13,70 +14,143 @@
 
 .confirmation-header {
     text-align: center;
-
-    margin-bottom: 40px;
+    margin-bottom: 45px;
 }
 
+/* Icône */
 .confirmation-icon {
-    font-size: 3.5rem;
+    font-size: 3.2rem;
 
-    color: #198754;
+    color: #8a7b6a;
 
-    margin-bottom: 10px;
+    margin-bottom: 14px;
+
     padding-top: 70px;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
+/* TITRE STYLE THEME */
 .confirmation-title {
-    font-size: 2.6rem;
+    font-size: 3rem;
 
     font-weight: 800;
 
-    color: #212529;
+    color: #2c2a26;
 
-    margin-bottom: 10px;
+    letter-spacing: 1px;
+
+    margin: 0;
+
+    text-align: center;
+
+    position: relative;
 }
 
+/* Barre décorative sous le titre */
+.confirmation-title::after {
+    content: "";
+
+    display: block;
+
+    width: 80px;
+    height: 4px;
+
+    background-color: #8a7b6a;
+
+    margin: 14px auto 0 auto;
+
+    border-radius: 999px;
+}
+
+/* Sous titre */
 .confirmation-subtitle {
-    color: #6c757d;
+    margin-top: 18px;
+
+    color: #6b6257;
 
     font-size: 1rem;
+
+    font-weight: 500;
+
+    letter-spacing: 0.3px;
+}
+
+/* =========================
+   TABLE WRAPPER
+========================= */
+
+.confirmation-table-wrapper {
+    background: #ffffff;
+
+    border-radius: 22px;
+
+    overflow: hidden;
+
+    border: 1px solid #e7ded0;
+
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
 }
 
 /* =========================
    TABLE
 ========================= */
 
-.confirmation-table-wrapper {
-    background: white;
-
-    border-radius: 18px;
-
-    overflow: hidden;
-
-    box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+.confirmation-table {
+    margin: 0;
 }
 
+/* HEADER TABLE */
 .confirmation-table thead {
-    background: #f5f5f5;
+    background: #f3ece2;
 }
 
 .confirmation-table thead th {
-    padding: 16px;
+    padding: 18px;
 
     text-transform: uppercase;
 
-    font-size: 0.85rem;
+    font-size: 0.82rem;
 
     font-weight: 800;
 
-    color: #212529;
+    letter-spacing: 1px;
+
+    color: #4b443c;
+
+    border: none;
 }
 
+/* CELLULES */
 .confirmation-table tbody td,
 .confirmation-table tfoot td {
-    padding: 16px;
+    padding: 18px;
 
     vertical-align: middle;
+
+    color: #2c2a26;
+
+    border-color: #f1ebe2;
+}
+
+/* Hover lignes */
+.confirmation-table tbody tr {
+    transition: 0.2s ease;
+}
+
+.confirmation-table tbody tr:hover {
+    background-color: #faf6f0;
+}
+
+/* FOOTER TOTAL */
+.confirmation-table tfoot {
+    background: #faf6f0;
+}
+
+.confirmation-table tfoot td {
+    font-size: 1rem;
 }
 
 /* =========================
@@ -84,23 +158,80 @@
 ========================= */
 
 .btn-home {
-    display: inline-block;
+    display: inline-flex;
+    justify-content: center;
+    align-items: center;
 
-    padding: 12px 20px;
+    padding: 14px 24px;
 
-    border-radius: 12px;
+    border-radius: 14px;
 
-    background: #212529;
+    background: #2c2a26;
 
-    color: white;
+    color: #ffffff;
 
     text-decoration: none;
 
     font-weight: 700;
 
+    letter-spacing: 0.4px;
+
     transition: 0.2s ease;
+
+    border: 1px solid transparent;
 }
 
+/* Hover */
 .btn-home:hover {
-    background: #000;
+    background: #1f1d1a;
+
+    color: #ffffff;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 18px rgba(0,0,0,0.08);
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 992px) {
+
+    .confirmation-title {
+        font-size: 2.4rem;
+    }
+
+    .confirmation-table thead th,
+    .confirmation-table tbody td,
+    .confirmation-table tfoot td {
+        padding: 14px;
+    }
+}
+
+@media (max-width: 768px) {
+
+    .confirmation-page {
+        padding: 50px 10px;
+    }
+
+    .confirmation-title {
+        font-size: 2rem;
+    }
+
+    .confirmation-subtitle {
+        font-size: 0.9rem;
+    }
+
+    .confirmation-table {
+        min-width: 650px;
+    }
+
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .btn-home {
+        width: 100%;
+    }
 }

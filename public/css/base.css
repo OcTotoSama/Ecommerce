@@ -151,3 +151,391 @@ footer p{
 
 
 
+
+
+/* =========================
+   PROFIL BUTTON (NAV)
+========================= */
+
+.nav-profile {
+    display: flex;
+    align-items: center;
+}
+
+/* bouton profil */
+.profile-pill {
+
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 6px 14px;
+
+    border-radius: 999px;
+
+    background: linear-gradient(
+        135deg,
+        #e8dccb,
+        #d8c6ad
+    );
+
+    color: #2c2a26 !important;
+
+    font-weight: 700;
+
+    letter-spacing: 0.3px;
+
+    border: 1px solid #cdb79e;
+
+    transition: all 0.2s ease;
+
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+}
+
+/* hover subtil */
+.profile-pill:hover {
+
+    background: linear-gradient(
+        135deg,
+        #d8c6ad,
+        #cbb394
+    );
+
+    transform: translateY(-1px);
+
+    color: #1f1d1a !important;
+
+    box-shadow: 0 6px 14px rgba(0,0,0,0.12);
+}
+
+/* icône */
+.profile-pill i {
+    font-size: 1.1rem;
+}
+
+
+/* =========================
+   NAVBAR BASE
+========================= */
+
+.custom-navbar {
+    background-color: rgba(44, 42, 38, 0.92) !important;
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    position: fixed;
+    width: 100%;
+    z-index: 1000;
+    border-bottom: 1px solid rgba(232, 220, 203, 0.08);
+}
+
+/* =========================
+   NAV LINKS (BOUTONS BASE)
+========================= */
+
+.nav-pill {
+
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 7px 14px;
+
+    border-radius: 999px;
+
+    color: #e8dccb !important;
+
+    font-weight: 600;
+
+    transition: 0.2s ease;
+
+    border: 1px solid transparent;
+}
+
+.nav-pill:hover {
+
+    background: rgba(232, 220, 203, 0.12);
+
+    border-color: rgba(232, 220, 203, 0.25);
+
+    transform: translateY(-1px);
+}
+
+/* =========================
+   PROFILE BUTTON
+========================= */
+
+.profile-pill {
+
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+
+    padding: 7px 16px;
+
+    border-radius: 999px;
+
+    background: linear-gradient(135deg, #e8dccb, #d8c6ad);
+
+    color: #2c2a26 !important;
+
+    font-weight: 700;
+
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+
+    transition: 0.2s ease;
+}
+
+.profile-pill:hover {
+    background: linear-gradient(135deg, #d8c6ad, #cbb394);
+    transform: translateY(-2px);
+}
+
+/* =========================
+   DANGER (LOGOUT)
+========================= */
+
+.danger-pill {
+    color: #e6b8b8 !important;
+}
+
+.danger-pill:hover {
+    background: rgba(255, 120, 120, 0.15);
+    border-color: rgba(255, 120, 120, 0.3);
+}
+
+/* =========================
+   DROPDOWN STYLE
+========================= */
+
+.nav-dropdown .dropdown-menu {
+
+    background: #f3ece2;
+
+    border: 1px solid #e2d6c5;
+
+    border-radius: 14px;
+
+    padding: 8px;
+
+    box-shadow: 0 10px 25px rgba(0,0,0,0.15);
+}
+
+.nav-dropdown .dropdown-item {
+
+    border-radius: 10px;
+
+    padding: 8px 12px;
+
+    color: #2c2a26;
+
+    font-weight: 600;
+
+    transition: 0.2s ease;
+}
+
+.nav-dropdown .dropdown-item:hover {
+
+    background: #e8dccb;
+
+    color: #1f1d1a;
+}
+
+/* =========================
+   ADMIN BADGE
+========================= */
+
+.admin-badge {
+
+    display: inline-flex;
+    align-items: center;
+
+    padding: 6px 12px;
+
+    border-radius: 999px;
+
+    background: #2c2a26;
+
+    color: #f3ece2;
+
+    font-weight: 800;
+
+    font-size: 0.8rem;
+
+    margin-right: 10px;
+}
+
+/* =========================
+   CART BADGE
+========================= */
+
+.cart-badge {
+
+    background: #d8c6ad;
+
+    color: #2c2a26;
+
+    font-weight: 800;
+
+    font-size: 0.75rem;
+
+    padding: 3px 7px;
+
+    border-radius: 999px;
+
+    margin-left: 6px;
+}
+
+/* =========================
+   ESPACEMENT ENTRE BOUTONS NAV
+========================= */
+
+.custom-navbar .navbar-nav {
+    gap: 12px; /* espace entre chaque item */
+    display: flex;
+    align-items: center;
+}
+
+/* =========================
+   FOOTER GLOBAL
+========================= */
+
+.site-footer {
+
+    background: linear-gradient(
+        180deg,
+        #2c2a26 0%,
+        #1f1d1a 100%
+    );
+
+    color: #e8dccb;
+
+    padding: 40px 20px 20px;
+
+  /*  margin-top: 60px;*/
+
+    border-top: 1px solid rgba(232, 220, 203, 0.1);
+}
+
+/* =========================
+   CONTAINER
+========================= */
+
+.footer-content {
+
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+
+    gap: 30px;
+
+    max-width: 1100px;
+
+    margin: auto;
+}
+
+/* =========================
+   BLOCS
+========================= */
+
+.footer-block {
+
+    min-width: 200px;
+}
+
+.footer-title {
+
+    display: block;
+
+    font-weight: 800;
+
+    font-size: 0.95rem;
+
+    margin-bottom: 10px;
+
+    color: #f3ece2;
+
+    letter-spacing: 0.5px;
+
+    text-transform: uppercase;
+}
+
+.footer-text {
+
+    font-size: 0.85rem;
+
+    color: #cbbba6;
+
+    margin: 4px 0;
+}
+
+/* =========================
+   LINKS
+========================= */
+
+.footer-link {
+
+    display: block;
+
+    font-size: 0.85rem;
+
+    color: #cbbba6;
+
+    text-decoration: none;
+
+    margin: 4px 0;
+
+    transition: 0.2s ease;
+}
+
+.footer-link:hover {
+
+    color: #f3ece2;
+
+    transform: translateX(3px);
+}
+
+/* =========================
+   BOTTOM BAR
+========================= */
+
+.footer-bottom {
+
+    margin-top: 30px;
+
+    text-align: center;
+
+    font-size: 0.8rem;
+
+    color: #9f8f7c;
+
+    border-top: 1px solid rgba(232, 220, 203, 0.08);
+
+    padding-top: 15px;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+
+@media (max-width: 768px) {
+
+    .footer-content {
+        flex-direction: column;
+        text-align: center;
+    }
+}
+
+
+
+/* =========================
+   NAVBAR SCROLL HIDE/SHOW
+========================= */
+
+.custom-navbar {
+    transition: transform 0.25s ease;
+    will-change: transform;
+}
+
+.navbar-hidden {
+    transform: translateY(-110%);
+}
