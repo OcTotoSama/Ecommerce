@@ -61,7 +61,7 @@
 							<p class="price">
 								{{ produit.prix|number_format(2, '.', '') }}€
 							</p>
-							<p class="moyenne-{{ produit.id }}">
+							<p class="moyenne-{{ produit.id }} moyenn_produit">
 								{% set moy = produit.moyenneNotes %}
 
 								{% if moy %}
