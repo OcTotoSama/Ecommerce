@@ -82,16 +82,14 @@ final class UtilisateurController extends AbstractController
         ]);
     }
 
-  
-
     #[Route('/reactiver-utilisateur/{id}', name: 'app_reactiver_utilisateur')]
     public function reactiver(User $user, EntityManagerInterface $em): Response
     {
         $user->setIsActive(true);
         $em->flush();
-    
+
         $this->addFlash('success', 'Utilisateur réactivé');
-    
+
         return $this->redirectToRoute('app_liste_utilisateur');
     }
 
@@ -100,9 +98,38 @@ final class UtilisateurController extends AbstractController
     {
         $user->setIsActive(false);
         $em->flush();
-    
+
         $this->addFlash('success', 'Utilisateur désactivé');
-    
+
+        return $this->redirectToRoute('app_liste_utilisateur');
+    }
+
+    #[Route('/changer-role/{id}', name: 'app_changer_role')]
+    #[IsGranted('ROLE_PROPRIETAIRE')]
+    public function changerRole(User $user, EntityManagerInterface $em, Request $request): Response
+    {
+        if (in_array('ROLE_PROPRIETAIRE', $user->getRoles())) {
+            if ($request->isXmlHttpRequest()) {
+                return $this->json(['success' => false, 'message' => 'Impossible de modifier le rôle du propriétaire.']);
+            }
+            $this->addFlash('error', 'Impossible de modifier le rôle du propriétaire.');
+            return $this->redirectToRoute('app_liste_utilisateur');
+        }
+
+        if (in_array('ROLE_ADMIN', $user->getRoles())) {
+            $user->setRoles([]);
+            $newRole = 'user';
+        } else {
+            $user->setRoles(['ROLE_ADMIN']);
+            $newRole = 'admin';
+        }
+
+        $em->flush();
+
+        if ($request->isXmlHttpRequest()) {
+            return $this->json(['success' => true, 'newRole' => $newRole]);
+        }
+
         return $this->redirectToRoute('app_liste_utilisateur');
     }
 }

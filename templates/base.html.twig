@@ -78,7 +78,6 @@
 									</a>
 								</li>
 
-								
 
 								<li class="nav-item">
 									<a class="nav-link nav-pill" href="{{path("app_liste_panier")}}">
@@ -99,7 +98,13 @@
 
 							{% else %}
 
-								<span class="admin-badge">Administration</span>
+
+								{% if is_granted('ROLE_PROPRIETAIRE') %}
+									<span class="admin-badge">Propriétaire</span>
+								{% else %}
+									<span class="admin-badge">Administration</span>
+
+								{% endif %}
 
 								<li class="nav-item dropdown nav-dropdown">
 									<a class="nav-link dropdown-toggle nav-pill" href="#" data-bs-toggle="dropdown">
@@ -183,7 +188,9 @@
 					<span class="footer-title">Navigation</span>
 					<a href="{{ path('app_accueil') }}" class="footer-link">Accueil</a>
 					<a href="{{ path('app_liste_tous_produit') }}" class="footer-link">Produits</a>
+					<a class="footer-link" href="{{ path('app_mentions_legales') }}">Mentions légales</a>
 				</div>
+
 
 			</div>
 
@@ -211,6 +218,8 @@
 			<script src="{{ asset('JS/global.js') }}" defer></script>
 		{% endblock %}
 
-
+		<button id="scrollTopBtn" class="scroll-top-btn">
+			<i class="bi bi-arrow-up-short"></i>
+		</button>
 	</body>
 </html>

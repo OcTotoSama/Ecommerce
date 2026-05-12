@@ -1,0 +1,124 @@
+{% extends 'base.html.twig' %}
+
+{% block stylesheets %}
+	{{ parent() }}
+	<link rel="stylesheet" href="{{ asset('css/mentions-legales.css') }}">
+{% endblock %}
+
+{% block title %}
+	{{ parent() }}Mentions légales
+{% endblock %}
+
+{% block body %}
+
+	<div class="legal-page">
+
+		<div class="legal-header">
+
+			<h1 class="legal-title">
+				Mentions légales
+			</h1>
+
+			<p class="legal-subtitle">
+				Informations légales concernant le site NovaSprite.
+			</p>
+
+		</div>
+
+		
+<div class="legal-container">
+
+    <section class="legal-section">
+
+        <div class="legal-card-header">
+            <div class="legal-icon">
+                <i class="bi bi-person-badge-fill"></i>
+            </div>
+
+            <h2>
+                Éditeur du site
+            </h2>
+        </div>
+
+        <div class="legal-card-content">
+
+            <p>
+                Le site
+                <strong>NovaSprite</strong>
+                est un projet développé par
+                <strong>Thomas Dominois</strong>.
+            </p>
+
+            <p>
+                Contact :
+                <a href="mailto:contact@novasprite.fr">
+                    contact@novasprite.fr
+                </a>
+            </p>
+
+        </div>
+
+    </section>
+
+    <section class="legal-section">
+
+        <div class="legal-card-header">
+
+            <div class="legal-icon">
+                <i class="bi bi-server"></i>
+            </div>
+
+            <h2>
+                Hébergement
+            </h2>
+
+        </div>
+
+        <div class="legal-card-content">
+
+            <p>
+                Site hébergé par votre hébergeur.
+            </p>
+
+            <p>
+                Nuage-Pédagogique
+            </p>
+
+        </div>
+
+    </section>
+
+    <section class="legal-section">
+
+        <div class="legal-card-header">
+
+            <div class="legal-icon">
+                <i class="bi bi-shield-lock-fill"></i>
+            </div>
+
+            <h2>
+                Données personnelles
+            </h2>
+
+        </div>
+
+        <div class="legal-card-content">
+
+            <p>
+                Les données collectées sur NovaSprite sont utilisées uniquement
+                dans le cadre du fonctionnement du site :
+                gestion des comptes, favoris, commandes et panier utilisateur.
+            </p>
+
+        </div>
+
+    </section>
+
+</div>
+
+
+
+
+
+	</div>
+{% endblock %}

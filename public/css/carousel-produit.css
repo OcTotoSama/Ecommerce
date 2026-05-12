@@ -5,10 +5,21 @@
 .carousel-section {
     background: linear-gradient(180deg, #f3ece2 0%, #ede2d3 100%);
     border: 1px solid #e2d6c5;
-    border-radius: 28px;
+  /*  border-radius: 28px;*/
     padding: 40px 30px;
     margin-top: 40px;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.04);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.04);
+
+
+
+    background:
+        radial-gradient(circle at top left,
+            rgba(255, 255, 255, 0.22) 0%,
+            rgba(255, 255, 255, 0) 70%),
+        linear-gradient(180deg,
+            #d7c5b0 0%,
+            #ccb59f 100%);
+
 }
 
 /* =========================
@@ -68,7 +79,8 @@
 ========================= */
 
 .carousel-card-wrapper {
-    width: 220px; /* garde ton design */
+    width: 220px;
+    /* garde ton design */
     display: flex;
     justify-content: center;
     box-sizing: border-box;
@@ -106,8 +118,15 @@
     cursor: pointer;
 }
 
-.carousel-control-prev { left: 12px; right: auto; }
-.carousel-control-next { right: 12px; left: auto; }
+.carousel-control-prev {
+    left: 12px;
+    right: auto;
+}
+
+.carousel-control-next {
+    right: 12px;
+    left: auto;
+}
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
@@ -128,7 +147,7 @@
 
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
-    box-shadow: 0 4px 10px rgba(0,0,0,0.12);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
 }
 
 /* =========================
@@ -136,20 +155,37 @@
 ========================= */
 
 @media (max-width: 1200px) {
-    .carousel-title { font-size: 2.2rem; }
-   /* .carousel-card-wrapper { width: 200px; }*/
-    .carousel-grid { gap: 20px; }
+    .carousel-title {
+        font-size: 2.2rem;
+    }
+
+    /* .carousel-card-wrapper { width: 200px; }*/
+    .carousel-grid {
+        gap: 20px;
+    }
 }
 
 @media (max-width: 992px) {
-    .carousel-section { padding: 30px 20px; }
-    .carousel-title { font-size: 2rem; }
-  /*  .carousel-card-wrapper { width: 180px; }*/
+    .carousel-section {
+        padding: 30px 20px;
+    }
+
+    .carousel-title {
+        font-size: 2rem;
+    }
+
+    /*  .carousel-card-wrapper { width: 180px; }*/
 }
 
 @media (max-width: 768px) {
-    .carousel-section { border-radius: 18px; padding: 25px 15px; }
-    .carousel-title { font-size: 1.7rem; }
+    .carousel-section {
+        border-radius: 18px;
+        padding: 25px 15px;
+    }
+
+    .carousel-title {
+        font-size: 1.7rem;
+    }
 
     .carousel-control-prev,
     .carousel-control-next {
@@ -159,8 +195,15 @@
         transform: translateY(-50%);
     }
 
-    .carousel-control-prev { left: 8px; right: auto; }
-    .carousel-control-next { right: 8px; left: auto; }
+    .carousel-control-prev {
+        left: 8px;
+        right: auto;
+    }
+
+    .carousel-control-next {
+        right: 8px;
+        left: auto;
+    }
 
     .carousel-control-prev-icon,
     .carousel-control-next-icon {
@@ -170,25 +213,35 @@
     }
 
     /*.carousel-card-wrapper { width: 160px; }*/
-    .carousel-grid { gap: 12px; }
+    .carousel-grid {
+        gap: 12px;
+    }
 }
 
 /* =========================
    GRID DEFAULTS (fallbacks si JS absent)
 ========================= */
 
-.carousel-grid { grid-template-columns: repeat(4, 1fr); }
+.carousel-grid {
+    grid-template-columns: repeat(4, 1fr);
+}
 
 @media (max-width: 1200px) {
-    .carousel-grid { grid-template-columns: repeat(3, 1fr); }
+    .carousel-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
 }
 
 @media (max-width: 900px) {
-    .carousel-grid { grid-template-columns: repeat(2, 1fr); }
+    .carousel-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
 }
 
 @media (max-width: 600px) {
-    .carousel-grid { grid-template-columns: repeat(1, 1fr); }
+    .carousel-grid {
+        grid-template-columns: repeat(1, 1fr);
+    }
 }
 
 /* =========================

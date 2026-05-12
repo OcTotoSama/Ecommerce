@@ -1,4 +1,4 @@
-html{
+html {
     user-select: none;
     -moz-user-select: none;
     -webkit-user-select: none;
@@ -7,63 +7,80 @@ html{
 }
 
 /* CONTAINER GLOBAL */
-.wrap{
+.wrap {
     background: linear-gradient(180deg, #f3ece2 0%, #ede2d3 100%);
     border: 1px solid #eef0f3;
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-   /* padding: 0 150px;*/
+    /* padding: 0 150px;*/
     gap: 20px;
     padding: 50px 0;
+
+
+    background: 
+    radial-gradient(
+        circle at top left,
+        rgba(255, 255, 255, 0.22) 0%,
+        rgba(255, 255, 255, 0) 70%
+    ),
+    linear-gradient(
+        180deg,
+        #d7c5b0 0%,
+        #ccb59f 100%
+    );
+
+border: 1px solid rgba(90, 70, 50, 0.10);
+
+box-shadow: 0 8px 22px rgba(40, 30, 20, 0.06);
 }
 
-.wrap-panier{
+.wrap-panier {
     border-radius: 0 16px 16px 0;
 }
 
 /* RENDU RESPONSIVE DU CONTAINER */
-@media(max-width: 1200px){
-    .wrap{
+@media(max-width: 1200px) {
+    .wrap {
         padding: 30px 150px;
     }
-    
+
 }
 
 
-@media(max-width: 900px){
-    .wrap-panier{
-        border-radius: 0  0;
+@media(max-width: 900px) {
+    .wrap-panier {
+        border-radius: 0 0;
         width: 100%;
     }
 }
 
-@media(max-width: 768px){
-    .wrap{
+@media(max-width: 768px) {
+    .wrap {
         padding: 15px 90px;
     }
-    
+
 }
 
-@media(max-width: 480px){
-    .wrap{
+@media(max-width: 480px) {
+    .wrap {
         padding: 5px 10px;
     }
 }
 
 /* CARTE */
-.card_anime{
+.card_anime {
     display: flex;
     align-items: center;
     flex-direction: column;
     background: linear-gradient(180deg, rgb(244, 248, 252) 0%, #f5f6f8 100%);
     width: 200px;
     margin: 12px;
-    border-radius:15px;
+    border-radius: 15px;
     overflow: hidden;
     transition: ease 0.3s;
     position: relative;
-    box-shadow:0 10px 20px #9ca3af;
+    box-shadow: 0 10px 20px #9ca3af;
 }
 
 /* RESPONSIVE DES CARTES */
@@ -79,51 +96,54 @@ html{
     }
 }*/
 
-.card_anime img{
-    pointer-events: none; 
+.card_anime img {
+    pointer-events: none;
     object-fit: contain;
     transition: 0.2s;
 }
 
 /* IMAGE */
-.div_card_img{
+.div_card_img {
     overflow: hidden;
     margin: 10px;
     display: flex;
     height: 120px;
-    align-items: center; 
+    align-items: center;
     justify-content: center;
 }
 
-.wrap p{
+.wrap p {
     margin: 0;
 }
+
 /*
 .card_anime:hover .ajout_panier {
     cursor: pointer;
 }*/
 
-.card_anime:hover{
+.card_anime:hover {
     scale: 1.03;
     transform: translateY(-15px);
 }
 
 /* CONTENU */
-.card_content{
+.card_content {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 0px;
-    margin:0px ;
+    margin: 0px;
     transition: ease 0.3s;
 }
 
-.card_content p{
+.card_content p {
     text-align: center;
 }
 
-.green{color: green;}
+.green {
+    color: green;
+}
 
 /* TITRE */
 .name {
@@ -145,14 +165,14 @@ html{
 }
 
 /* AU FORMAT MOBILE : TITRE PLUS PETIT */
-@media (max-width: 480px){
-    .name{
+@media (max-width: 480px) {
+    .name {
         font-size: 20px;
         width: 100%;
     }
 }
 
-.price{
+.price {
     font-weight: 700;
     font-size: 25px;
 }
@@ -165,22 +185,20 @@ html{
     top: 0;
     width: 100%;
     height: 1px;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(30, 58, 95, 0.4),
-        transparent
-    );
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(30, 58, 95, 0.4),
+            transparent);
 }
 
-.explain{
+.explain {
     color: #9ca3af;
     height: 70px;
     max-width: 170px;
     line-height: 1;
 }
 
-.in-panier{
+.in-panier {
     line-height: 1;
     margin: 5px !important;
 
@@ -192,7 +210,7 @@ html{
 }
 
 /* BOUTON AJOUT PANIER */
-.ajout_panier{
+.ajout_panier {
     color: white;
     background: #111827;
     width: 100%;
@@ -205,11 +223,11 @@ html{
     text-decoration: none;
 }
 
-.card_anime:hover .ajout_panier{
+.card_anime:hover .ajout_panier {
     background: #000000;
 }
 
-.btncard{
+.btncard {
     color: white;
     text-decoration: none;
     font-size: 25px;
@@ -222,7 +240,7 @@ html{
 }
 
 /* HOVER IMAGE */
-.card_anime:hover img{
+.card_anime:hover img {
     filter: brightness(1.02) contrast(1.12);
 }
 
@@ -247,12 +265,13 @@ html{
 .favori::before {
     font-family: ui-sans-serif, system-ui, sans-serif;
     font-size: 16px;
-    color: rgb(229, 85, 85); 
+    color: rgb(229, 85, 85);
 }
 
 .favori:hover {
     transform: scale(1.02);
 }
+
 .card_anime .favori {
     position: absolute;
     top: 8px;
@@ -276,12 +295,13 @@ html{
 .supprimer::before {
     font-family: ui-sans-serif, system-ui, sans-serif;
     font-size: 16px;
-    color: rgb(62, 61, 61); 
+    color: rgb(62, 61, 61);
 }
 
 .supprimer:hover {
     transform: scale(1.02);
 }
+
 .card_anime .supprimer {
     position: absolute;
     top: 8px;
@@ -291,7 +311,7 @@ html{
 
 
 
-.aimer{
+.aimer {
     color: red;
 }
 
@@ -301,10 +321,11 @@ html{
     display: inline-block;
     justify-content: center;
     align-items: center;
-    
+
 
 }
-.image-wrapper-container{
+
+.image-wrapper-container {
     width: 100%;
     display: flex;
     align-items: center;
@@ -319,14 +340,27 @@ html{
     border: 2px solid red;
     border-radius: 50%;
     transform: translate(-50%, -50%);
-    pointer-events: none; /* Laisse la MAP cliquer normalement */
-    box-shadow: 0 0 8px rgba(255,0,0,0.5);
+    pointer-events: none;
+    /* Laisse la MAP cliquer normalement */
+    box-shadow: 0 0 8px rgba(255, 0, 0, 0.5);
     animation: pulse 1.3s infinite ease-in-out;
 }
 
 @keyframes pulse {
-    0%   { transform: translate(-50%, -50%) scale(1);   opacity: 1; }
-    50%  { transform: translate(-50%, -50%) scale(1.3); opacity: 0.65; }
-    100% { transform: translate(-50%, -50%) scale(1);   opacity: 1; }
+    0% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: translate(-50%, -50%) scale(1.3);
+        opacity: 0.65;
+    }
+
+    100% {
+        transform: translate(-50%, -50%) scale(1);
+        opacity: 1;
+    }
 }
+
 /*-----------------------------------------------------------------*/

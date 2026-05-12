@@ -64,6 +64,11 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
+    background:
+        radial-gradient(circle at top, rgba(214,194,170,0.18), transparent 45%),
+        linear-gradient(180deg, #f7f1e8 0%, #efe3d2 100%);
+
+        
 }
 
 main {
@@ -538,4 +543,154 @@ footer p{
 
 .navbar-hidden {
     transform: translateY(-110%);
+}
+
+
+.footer-link {
+
+    color: #d6c2aa;
+
+    text-decoration: none;
+
+    font-weight: 600;
+
+    transition: 0.2s ease;
+}
+
+.footer-link:hover {
+
+    color: #ffffff;
+
+    text-decoration: underline;
+}
+
+
+
+
+
+/* =========================
+   SCROLL TOP BUTTON
+========================= */
+
+.scroll-top-btn {
+
+    position: fixed;
+
+    right: 30px;
+    bottom: 30px;
+
+    width: 55px;
+    height: 55px;
+
+    border-radius: 20px;
+
+    border: 1px solid rgba(255,255,255,0.08);
+
+    background: rgba(35, 28, 20, 0.45);
+
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    cursor: pointer;
+
+    z-index: 2000;
+
+    box-shadow:
+        0 8px 22px rgba(0,0,0,0.16);
+
+    opacity: 0;
+
+    pointer-events: none;
+
+    transform:
+        translateY(15px)
+        scale(0.92);
+
+    transition:
+        opacity 0.35s ease,
+        transform 0.35s ease,
+        background 0.25s ease,
+        box-shadow 0.25s ease;
+}
+
+/* =========================
+   BOUTON VISIBLE
+========================= */
+
+.scroll-top-btn.show {
+
+    opacity: 1;
+
+    pointer-events: auto;
+
+    transform:
+        translateY(0)
+        scale(1);
+}
+
+/* =========================
+   HOVER
+========================= */
+
+.scroll-top-btn:hover {
+
+    background: rgba(25, 20, 15, 0.60);
+
+    transform:
+        translateY(-4px)
+        scale(1.03);
+
+    box-shadow:
+        0 12px 28px rgba(0,0,0,0.22);
+}
+
+/* =========================
+   ICON FLECHE
+========================= */
+
+.scroll-top-btn i {
+
+    font-size: 2rem;
+
+    line-height: 1;
+
+    color: #f5efe7;
+
+    transition:
+        transform 0.25s ease,
+        color 0.25s ease;
+}
+
+/* hover icon */
+
+.scroll-top-btn:hover i {
+
+    transform: translateY(-3px);
+
+    color: #ffffff;
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media (max-width: 768px) {
+
+    .scroll-top-btn {
+
+        width: 48px;
+        height: 48px;
+
+        right: 18px;
+        bottom: 18px;
+    }
+
+    .scroll-top-btn i {
+
+        font-size: 1.7rem;
+    }
 }
