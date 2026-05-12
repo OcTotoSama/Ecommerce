@@ -10,6 +10,8 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\Security\Http\Attribute\IsGranted;
+use App\Repository\CommandeRepository;
+
 
 #[IsGranted('IS_AUTHENTICATED_FULLY')]
 class CommandeController extends AbstractController
@@ -87,12 +89,19 @@ class CommandeController extends AbstractController
 
     #[Route('/admin/commande/supprimer/{id}', name: 'app_admin_commande_supprimer', methods: ['DELETE'])]
     #[IsGranted('ROLE_ADMIN')]
-    public function supprimer(Commande $commande, EntityManagerInterface $em): JsonResponse
+    public function supprimer(Commande $commande, EntityManagerInterface $em, CommandeRepository $repo): JsonResponse
     {
         $em->remove($commande);
         $em->flush();
 
-        return $this->json(['success' => true]);
+        $commandes = $repo->findAll();
+        $revenu = array_reduce($commandes, fn($carry, $c) => $carry + ($c->getTotal() * 1.2), 0);
+
+        return $this->json([
+            'success' => true,
+            'nbCommandes' => count($commandes),
+            'revenu' => number_format($revenu, 2, '.', ''),
+        ]);
     }
 
     #[Route('/mes-commandes/supprimer/{id}', name: 'app_mes_commandes_supprimer', methods: ['DELETE'])]

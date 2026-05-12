@@ -21,10 +21,62 @@
 				Gestion des commandes
 			</h1>
 		</div>
+		{# =========================
+						   STATS
+						========================= #}
+
+		<div class="stats-container">
+
+			<div class="stat-card">
+
+				<div class="stat-icon revenue">
+					<i class="bi bi-cash-stack"></i>
+				</div>
+
+				<div class="stat-content">
+					<span class="stat-label">
+						Revenu total
+					</span>
+
+				
+
+					<span class="stat-value" id="stat-revenu">
+						{{ commandes|reduce((carry, c) => carry + (c.total * 1.2), 0)|number_format(2, '.', '') }}
+						€
+					</span>
+
+
+				</div>
+
+			</div>
+
+			<div class="stat-card">
+
+				<div class="stat-icon orders">
+					<i class="bi bi-bag-check-fill"></i>
+				</div>
+
+				<div class="stat-content">
+					<span class="stat-label">
+						Nombre de commandes
+					</span>
+
+				
+
+					<span class="stat-value" id="stat-nb-commandes">
+						{{ commandes|length }}
+					</span>
+
+
+				</div>
+
+			</div>
+
+		</div>
 
 		{# =========================
-					   COMMANDES NON LUES
-					========================= #}
+											   COMMANDES NON LUES
+											========================= #}
 
 		{% if commandes_nonlues is not empty %}
 
@@ -46,8 +98,8 @@
 		{% endif %}
 
 		{# =========================
-					   TOUTES LES COMMANDES
-					========================= #}
+											   TOUTES LES COMMANDES
+											========================= #}
 
 		<div class="section-title">
 			<i class="bi bi-receipt"></i>
@@ -199,6 +251,6 @@
 {% endmacro %}
 
 {% block javascripts %}
-    {{ parent() }}
-    <script src="{{ asset('JS/supprimerCommande.js') }}"></script>
+	{{ parent() }}
+	<script src="{{ asset('JS/supprimerCommande.js') }}"></script>
 {% endblock %}

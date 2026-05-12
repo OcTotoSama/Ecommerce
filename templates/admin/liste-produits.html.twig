@@ -70,18 +70,40 @@
 							{% for element in returns | sort((a, b) => a.name <=> b.name) %}
 
 								<tr class="product-row">
+									<td class="tooltip-cell-left fw-semibold searchable">
 
-									<td class="fw-semibold searchable">
-										{{ element.name | capitalize }}
+										{% set name = element.name|capitalize %}
+
+										<span class="truncate-text-name">
+											{{ name|length > 10 ? name|slice(0, 6) ~ '...' : name  }}
+										</span>
+
+										<span class="tooltip-box-left">
+											{{ name }}
+										</span>
+
 									</td>
+
 
 									<td>
 										<img src="{{ asset('images/img_produit/' ~ element.image) }}" alt="{{ element.name }}" class="product-image">
 									</td>
 
-									<td class="text-muted searchable">
-										{{ element.designation | capitalize }}
+
+									<td class="tooltip-cell searchable">
+
+										{% set desc = element.designation|capitalize %}
+
+										<span class="truncate-text">
+											{{ desc|length > 10  ? desc|slice(0, 6) ~ '...'  : desc }}
+										</span>
+
+										<span class="tooltip-box">
+											{{ element.designation }}
+										</span>
+
 									</td>
+
 
 									<td>
 										<span class="price-badge">

@@ -132,4 +132,12 @@ final class UtilisateurController extends AbstractController
 
         return $this->redirectToRoute('app_liste_utilisateur');
     }
+
+
+
+ /*   #[Route('/404', name: 'app_404')]
+public function notFound(): Response
+{
+    return $this->render('bundles/TwigBundle/Exception/error404.html.twig');
+}*/
 }

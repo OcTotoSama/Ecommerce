@@ -1,112 +1,110 @@
 {# templates/components/carousel-produits.html.twig #}
 <div class="carousel-section mb-5">
 
-    <div class="carousel-header">
-        <h2 class="carousel-title">
-            {{ titre }}
-        </h2>
-        <div class="carousel-title-line"></div>
-    </div>
+	<div class="carousel-header">
+		<h2 class="carousel-title">
+			{{ titre }}
+		</h2>
+		<div class="carousel-title-line"></div>
+	</div>
 
-    <div id="carousel-{{ mot|replace({' ': '-'}) }}-{{ filterBy|default('name') }}"
-         class="carousel slide custom-carousel"
-         data-bs-ride="false"
-         data-carousel-id="carousel-{{ mot|replace({' ': '-'}) }}-{{ filterBy|default('name') }}">
+	<div id="carousel-{{ mot|replace({' ': '-'}) }}-{{ filterBy|default('name') }}" class="carousel slide custom-carousel" data-bs-ride="false" data-carousel-id="carousel-{{ mot|replace({' ': '-'}) }}-{{ filterBy|default('name') }}">
 
-        <div class="carousel-inner">
-            {# Les slides seront générés dynamiquement par le JS à partir des cartes ci‑dessous #}
-        </div>
+		<div
+			class="carousel-inner">{# Les slides seront générés dynamiquement par le JS à partir des cartes ci‑dessous #}
+		</div>
 
-        {# Conteneur source contenant toutes les cartes (non affiché directement) #}
-        <div class="carousel-all-items visually-hidden" data-carousel-items>
-            {# Choix du champ de filtrage (par défaut 'name') #}
-            {% set field = filterBy is defined ? filterBy : 'name' %}
+		{# Conteneur source contenant toutes les cartes (non affiché directement) #}
+		<div
+			class="carousel-all-items visually-hidden" data-carousel-items>
+			{# Choix du champ de filtrage (par défaut 'name') #}
+			{% set field = filterBy is defined ? filterBy : 'name' %}
 
-            {% set filtered = produits|filter(p =>
+			{% set filtered = produits|filter(p =>
                 (field == 'designation'
                     ? (p.designation is defined and p.designation ? (mot|lower in p.designation|lower) : false)
                     : (p.name is defined and p.name ? (mot|lower in p.name|lower) : false)
                 )
             ) %}
 
-            {% for produit in filtered %}
-                <div class="carousel-card-wrapper" data-carousel-item>
+			{% for produit in filtered %}
+				<div class="carousel-card-wrapper" data-carousel-item>
 
-                    <div class="card_anime h-100">
+					<div class="card_anime h-100">
 
-                        <a href="{% if is_granted('IS_AUTHENTICATED_FULLY') %}javascript:void(0);{% else %}{{ path('app_login') }}{% endif %}"
-                           class="favori-toggle"
-                           data-id="{{ produit.id }}"
-                           data-url="{{ path('app_favori', {'id': produit.id}) }}"
-                           data-auth="{{ is_granted('IS_AUTHENTICATED_FULLY') ? 'true' : 'false' }}">
+						<a href="{% if is_granted('IS_AUTHENTICATED_FULLY') %}javascript:void(0);{% else %}{{ path('app_login') }}{% endif %}" class="favori-toggle" data-id="{{ produit.id }}" data-url="{{ path('app_favori', {'id': produit.id}) }}" data-auth="{{ is_granted('IS_AUTHENTICATED_FULLY') ? 'true' : 'false' }}">
 
-                            {% if not is_granted('IS_AUTHENTICATED_FULLY') %}
-                                <i class="bi bi-heart favori"></i>
-                            {% else %}
-                                {% if produit in app.user.produits %}
-                                    <i class="bi bi-heart-fill favori"></i>
-                                {% else %}
-                                    <i class="bi bi-heart favori"></i>
-                                {% endif %}
-                            {% endif %}
+							{% if not is_granted('IS_AUTHENTICATED_FULLY') %}
+								<i class="bi bi-heart favori"></i>
+							{% else %}
+								{% if produit in app.user.produits %}
+									<i class="bi bi-heart-fill favori"></i>
+								{% else %}
+									<i class="bi bi-heart favori"></i>
+								{% endif %}
+							{% endif %}
 
-                        </a>
+						</a>
 
-                        {% set image = 'images/img_produit/' ~ produit.image %}
+						{% set image = 'images/img_produit/' ~ produit.image %}
 
-                        <div class="div_card_img">
-                            <img class="card-img-top"
-                                 src="{{ asset(image) }}"
-                                 alt="Image de {{ produit.name }}">
-                        </div>
+						<div class="div_card_img">
+							<img class="card-img-top" src="{{ asset(image) }}" alt="Image de {{ produit.name }}">
+						</div>
 
-                        <div class="card_content">
+						<div class="card_content">
 
-                            <p class="name">{{ produit.name }}</p>
+							<p class="name">{{ produit.name }}</p>
 
-                            <p class="explain">{{ produit.designation }}</p>
+							<p class="explain">{{ produit.designation }}</p>
 
-                            <p class="price">
-                                {{ produit.prix|number_format(2, '.', '') }}€
-                            </p>
+							<p class="price">
+								{{ produit.prix|number_format(2, '.', '') }}€
+							</p>
+							<p class="moyenne-{{ produit.id }}">
+								{% set moy = produit.moyenneNotes %}
 
-                        </div>
+								{% if moy %}
+									★
+									{{ moy }}/5
+									<small class="text-muted">
+										({{ produit.evaluations|length }}
+										avis)
+									</small>
+								{% else %}
+									<small class="text-muted">
+										Aucun avis
+									</small>
+								{% endif %}
+							</p>
 
-                        <a href="{% if is_granted('IS_AUTHENTICATED_FULLY') %}javascript:void(0);{% else %}{{ path('app_login') }}{% endif %}"
-                           class="ajout-panier ajout_panier"
-                           data-id="{{ produit.id }}"
-                           data-url="{{ path('app_panier', {'id': produit.id}) }}"
-                           data-auth="{{ is_granted('IS_AUTHENTICATED_FULLY') ? 'true' : 'false' }}">
+						</div>
 
-                            <i class="bi bi-bag"></i>
-                            Add to Cart
+						<a href="{% if is_granted('IS_AUTHENTICATED_FULLY') %}javascript:void(0);{% else %}{{ path('app_login') }}{% endif %}" class="ajout-panier ajout_panier" data-id="{{ produit.id }}" data-url="{{ path('app_panier', {'id': produit.id}) }}" data-auth="{{ is_granted('IS_AUTHENTICATED_FULLY') ? 'true' : 'false' }}">
 
-                        </a>
+							<i class="bi bi-bag"></i>
+							Add to Cart
 
-                    </div>
+						</a>
 
-                </div>
-            {% endfor %}
-        </div>
+					</div>
 
-        <button class="carousel-control-prev custom-carousel-btn"
-                type="button"
-                data-bs-target="#carousel-{{ mot|replace({' ': '-'}) }}-{{ filterBy|default('name') }}"
-                data-bs-slide="prev">
+				</div>
+			{% endfor %}
+		</div>
 
-            <span class="carousel-control-prev-icon"></span>
+		<button class="carousel-control-prev custom-carousel-btn" type="button" data-bs-target="#carousel-{{ mot|replace({' ': '-'}) }}-{{ filterBy|default('name') }}" data-bs-slide="prev">
 
-        </button>
+			<span class="carousel-control-prev-icon"></span>
 
-        <button class="carousel-control-next custom-carousel-btn"
-                type="button"
-                data-bs-target="#carousel-{{ mot|replace({' ': '-'}) }}-{{ filterBy|default('name') }}"
-                data-bs-slide="next">
+		</button>
 
-            <span class="carousel-control-next-icon"></span>
+		<button class="carousel-control-next custom-carousel-btn" type="button" data-bs-target="#carousel-{{ mot|replace({' ': '-'}) }}-{{ filterBy|default('name') }}" data-bs-slide="next">
 
-        </button>
+			<span class="carousel-control-next-icon"></span>
 
-    </div>
+		</button>
+
+	</div>
 
 </div>
