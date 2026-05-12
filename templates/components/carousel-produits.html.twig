@@ -64,7 +64,7 @@
 							<p class="moyenne-{{ produit.id }} moyenn_produit">
 								{% set moy = produit.moyenneNotes %}
 
-								{% if moy %}
+								{% if produit.evaluations|length > 0 %}
 									★
 									{{ moy }}/5
 									<small class="text-muted">
