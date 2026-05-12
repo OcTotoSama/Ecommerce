@@ -203,18 +203,15 @@
 		</footer>
 
 		{% block javascripts %}
-			{# script du carousel (déféré) #}
+
+			<script>
+				const ACCUEIL_URL = "{{ url('app_accueil') }}";
+			</script>
 			<script src="{{ asset('JS/carousel-responsive.js') }}" defer></script>
 
-			{# variable côté client (utile pour global.js) #}
-			<script>
-				const ACCUEIL_URL = "{{ path('app_accueil') }}";
-			</script>
-
-			{# Bootstrap JS : une seule inclusion, bundle (Popper inclus) #}
+		
 			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous" defer></script>
 
-			{# global.js doit s'exécuter après Bootstrap : utiliser defer pour préserver l'ordre #}
 			<script src="{{ asset('JS/global.js') }}" defer></script>
 		{% endblock %}
 

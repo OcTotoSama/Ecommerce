@@ -13,9 +13,34 @@
 
 {% block body %}
 
+
+
 	<div class="user-header">
-		<h1 class="user-title">Liste des utilisateurs</h1>
+
+		<h1 class="user-title">
+			Liste des utilisateurs
+		</h1>
+
+		<div class="user-counts">
+
+			<span class="user-count user-count-active">
+				{{ actifs|length }}
+				actifs
+			</span>
+
+			<span class="user-count user-count-inactive">
+				{{ inactifs|length }}
+				inactifs
+			</span>
+			<span class="user-count">
+				{{ actifs|length + inactifs|length}}
+				utilisateurs
+			</span>
+
+		</div>
+
 	</div>
+
 
 	<div class="page-wrapper">
 		<div class="table-container">

@@ -23,8 +23,8 @@
 		</div>
 
 		{# =========================
-			   COMMANDES NON LUES
-			========================= #}
+					   COMMANDES NON LUES
+					========================= #}
 
 		{% if commandes_nonlues is not empty %}
 
@@ -46,8 +46,8 @@
 		{% endif %}
 
 		{# =========================
-			   TOUTES LES COMMANDES
-			========================= #}
+					   TOUTES LES COMMANDES
+					========================= #}
 
 		<div class="section-title">
 			<i class="bi bi-receipt"></i>
@@ -95,7 +95,7 @@
 
 			{% for commande in liste %}
 
-				<tr>
+				<tr data-commande-id="{{ commande.id }}">
 
 					<td>
 						<span class="order-id">
@@ -179,6 +179,11 @@
 
 							</a>
 
+							<button type="button" class="delete-order-btn" data-url="{{ path('app_admin_commande_supprimer', {'id': commande.id}) }}" onclick="supprimerCommande(this)">
+								<i class="bi bi-trash-fill"></i>
+								Supprimer
+							</button>
+
 						</div>
 
 					</td>
@@ -192,3 +197,8 @@
 	</table>
 
 {% endmacro %}
+
+{% block javascripts %}
+    {{ parent() }}
+    <script src="{{ asset('JS/supprimerCommande.js') }}"></script>
+{% endblock %}

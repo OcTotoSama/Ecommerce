@@ -3,24 +3,6 @@
 (function () {
     'use strict';
 
-    // Si ACCUEIL_URL n'est pas défini globalement, on le reconstruit à partir de location
-    // Cela évite les problèmes de Mixed Content si une valeur http est injectée.
-    // Si tu fournis ACCUEIL_URL côté serveur, garde-le ; sinon ce fallback est sûr.
-    const ACCUEIL_URL = (typeof window.ACCUEIL_URL !== 'undefined' && window.ACCUEIL_URL)
-        ? (function (u) {
-            try {
-                // si l'URL commence par http:// et la page est en https, on force le protocole de la page
-                const parsed = new URL(u, location.origin);
-                if (location.protocol === 'https:' && parsed.protocol === 'http:') {
-                    parsed.protocol = 'https:';
-                }
-                return parsed.toString();
-            } catch (e) {
-                return location.origin + '/';
-            }
-        })(window.ACCUEIL_URL)
-        : (location.origin + '/');
-
     const emptyCartHTML = `
     <div id="empty-cart">
         <div class="back-panier">

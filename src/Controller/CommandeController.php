@@ -3,9 +3,9 @@ namespace App\Controller;
 
 use App\Entity\Commande;
 use App\Entity\LigneCommande;
-use App\Repository\AjouterRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -34,7 +34,7 @@ class CommandeController extends AbstractController
     #[Route('/commande/passer', name: 'app_commande_passer', methods: ['POST'])]
     public function passerCommande(Request $request, EntityManagerInterface $em): Response
     {
-        $user   = $this->getUser();
+        $user = $this->getUser();
         $panier = $user->getPanier();
 
         // Récupère les IDs cochés envoyés par le formulaire
@@ -84,4 +84,30 @@ class CommandeController extends AbstractController
             'commande' => $commande,
         ]);
     }
+
+    #[Route('/admin/commande/supprimer/{id}', name: 'app_admin_commande_supprimer', methods: ['DELETE'])]
+    #[IsGranted('ROLE_ADMIN')]
+    public function supprimer(Commande $commande, EntityManagerInterface $em): JsonResponse
+    {
+        $em->remove($commande);
+        $em->flush();
+
+        return $this->json(['success' => true]);
+    }
+
+    #[Route('/mes-commandes/supprimer/{id}', name: 'app_mes_commandes_supprimer', methods: ['DELETE'])]
+    #[IsGranted('ROLE_USER')]
+    public function supprimerMaCommande(Commande $commande, EntityManagerInterface $em): JsonResponse
+    {
+        // Vérifier que la commande appartient bien à l'utilisateur connecté
+        if ($commande->getUser() !== $this->getUser()) {
+            return $this->json(['success' => false, 'message' => 'Accès refusé.'], 403);
+        }
+
+        $em->remove($commande);
+        $em->flush();
+
+        return $this->json(['success' => true]);
+    }
+
 }

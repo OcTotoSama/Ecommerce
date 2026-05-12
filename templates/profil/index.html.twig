@@ -18,25 +18,46 @@
 			<h1 class="user-title">Mon profil</h1>
 		</div>
 
+
 		<div class="page-wrapper">
 
-			<div class="table-container">
-
-				{# FLASH #}
-				{#}   <div class="flash-zone mb-3">
-				                {% for type, messages in app.flashes %}
-				                    {% for message in messages %}
-				                        <div class="alert custom-alert alert-{{ type }}">
-				                            {{ message }}
-				                        </div>
-				                    {% endfor %}
-				                {% endfor %}
-				            </div>#}
+			<div
+				class="table-container">
 
 				{# ================= INFOS ================= #}
-					<div class="profile-block"> <h5 class="profile-block-title">
-						<i class="bi bi-person"></i>
-						Informations personnelles
+				<div class="profile-block">
+					<h5 class="profile-block-title role-header">
+
+						<span class="title-left">
+							<i class="bi bi-person"></i>
+							Informations personnelles
+						</span>
+
+						{% set roles = app.user.roles %}
+
+						{% if 'ROLE_PROPRIETAIRE' in roles %}
+
+							<span class="role-badge owner">
+								<i class="bi bi-crown"></i>
+								Propriétaire
+							</span>
+
+						{% elseif 'ROLE_ADMIN' in roles %}
+
+							<span class="role-badge admin">
+								<i class="bi bi-shield-check"></i>
+								Admin
+							</span>
+
+						{% else %}
+
+							<span class="role-badge user">
+								<i class="bi bi-person-badge"></i>
+								Utilisateur
+							</span>
+
+						{% endif %}
+
 					</h5>
 
 					{{ form_start(formInfo) }}

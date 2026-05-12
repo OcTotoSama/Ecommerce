@@ -521,3 +521,72 @@
         border-radius: 8px;
     }
 }
+
+
+/* =========================
+   DELETE BUTTON
+========================= */
+
+.delete-order-btn {
+
+    display: inline-flex;
+
+    align-items: center;
+
+    gap: 8px;
+
+    padding: 10px 14px;
+
+    border-radius: 12px;
+
+    border: 1px solid #e5dcd0;
+
+    background: #2a2622; /* marron sombre cohérent avec ton thème */
+
+    color: #f3ece2;
+
+    font-weight: 700;
+
+    font-size: 0.9rem;
+
+    cursor: pointer;
+
+    transition: 
+        background 0.25s ease,
+        transform 0.2s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease;
+}
+
+/* hover normal */
+.delete-order-btn:hover {
+
+    background: #1c1916;
+
+    transform: translateY(-2px);
+
+    box-shadow: 0 8px 18px rgba(0,0,0,0.15);
+    border-color: #c9b9a6;
+}
+
+/* hover danger (accent subtil rouge, pas agressif) */
+.delete-order-btn:hover {
+
+    color: #ffd6d6;
+}
+
+/* icône bien alignée */
+.delete-order-btn i {
+
+    font-size: 1rem;
+
+    line-height: 1;
+}
+
+/* effet focus clavier */
+.delete-order-btn:focus {
+
+    outline: none;
+
+    box-shadow: 0 0 0 3px rgba(180, 150, 120, 0.25);
+}
