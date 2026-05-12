@@ -18,7 +18,7 @@
 
 		<div class="commandes-header">
 			<h1 class="commandes-title">
-				Gestion des commandes
+				Gestion des putes
 			</h1>
 		</div>
 		{# =========================
@@ -41,7 +41,8 @@
 				
 
 					<span class="stat-value" id="stat-revenu">
-						{{ commandes|reduce((carry, c) => carry + (c.total * 1.2), 0)|number_format(2, '.', '') }}
+						{{ commandes|reduce((carry, c) => carry + (c.total * 1.2), 0)|number_format(2, '.', '') + 
+						commandes_nonlues|reduce((carry, c) => carry + (c.total * 1.2), 0)|number_format(2, '.', '') }}
 						€
 					</span>
 
@@ -64,7 +65,7 @@
 				
 
 					<span class="stat-value" id="stat-nb-commandes">
-						{{ commandes|length }}
+						{{ commandes|length + commandes_nonlues|length }}
 					</span>
 
 
